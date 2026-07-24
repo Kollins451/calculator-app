@@ -1,17 +1,18 @@
 {
   "name": "Kollins Calculator",
   "short_name": "Calculator",
-  "start_url": "./",
+  "start_url": "/calculator-app/",
+  "scope": "/calculator-app/",
   "display": "standalone",
   "background_color": "#222222",
   "theme_color": "#222222",
   "description": "A simple calculator app built with HTML, CSS and JavaScript.",
   "icons": [
     {
-      "src": "icon.svg",
+      "src": "/calculator-app/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
