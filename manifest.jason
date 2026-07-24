@@ -1,0 +1,9 @@
+{
+  "name": "Kollins Calculator",
+  "short_name": "Calculator",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#222222",
+  "theme_color": "#222222",
+  "description": "A simple calculator app built with HTML, CSS and JavaScript."
+}
