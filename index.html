@@ -56,5 +56,20 @@
   <!-- Connect JavaScript -->
   <script src="script.js"></script>
 
+  <!-- Register Service Worker -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+          .then(() => {
+            console.log("Service Worker registered successfully!");
+          })
+          .catch((error) => {
+            console.log("Service Worker registration failed:", error);
+          });
+      });
+    }
+  </script>
+
 </body>
 </html>
