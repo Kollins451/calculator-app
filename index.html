@@ -6,11 +6,10 @@
 
   <title>Kollins Calculator</title>
 
-  <!-- Connect CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/calculator-app/style.css">
+  <link rel="manifest" href="/calculator-app/manifest.json">
 
-  <!-- Connect PWA Manifest -->
-  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#222222">
 </head>
 
 <body>
@@ -53,14 +52,12 @@
 
   </div>
 
-  <!-- Connect JavaScript -->
-  <script src="script.js"></script>
+  <script src="/calculator-app/script.js"></script>
 
-  <!-- Register Service Worker -->
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js")
+        navigator.serviceWorker.register("/calculator-app/sw.js")
           .then(() => {
             console.log("Service Worker registered successfully!");
           })
