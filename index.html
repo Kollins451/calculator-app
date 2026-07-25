@@ -1,529 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-  >
-
-  <meta name="theme-color" content="#222222">
-
-  <title>Kollins Calculator</title>
-
-  <link rel="stylesheet" href="/calculator-app/style.css">
-  <link rel="manifest" href="/calculator-app/manifest.json">
-</head>
-
-<body>
-
-  <div class="app">
-
-    <!-- App Header -->
-    <header class="app-header">
-      <h1>Kollins Calculator</h1>
-    </header>
-
-    <!-- Navigation -->
-    <nav class="mode-navigation">
-      <button class="mode-button active" data-mode="basic">
-        Basic
-      </button>
-
-      <button class="mode-button" data-mode="scientific">
-        Scientific
-      </button>
-
-      <button class="mode-button" data-mode="converter">
-        Converter
-      </button>
-    </nav>
-
-
-    <!-- ========================= -->
-    <!-- BASIC CALCULATOR -->
-    <!-- ========================= -->
-
-    <section id="basic-mode" class="calculator-mode active-mode">
-
-      <div class="calculator-display">
-        <div id="basic-expression" class="expression">
-          0
-        </div>
-
-        <div id="basic-result" class="result">
-          0
-        </div>
-      </div>
-
-      <div class="calculator-buttons">
-
-        <button class="calculator-button clear-button" data-action="clear">
-          AC
-        </button>
-
-        <button class="calculator-button" data-action="delete">
-          DEL
-        </button>
-
-        <button class="calculator-button operator-button" data-value="%">
-          %
-        </button>
-
-        <button class="calculator-button operator-button" data-value="/">
-          ÷
-        </button>
-
-
-        <button class="calculator-button" data-value="7">
-          7
-        </button>
-
-        <button class="calculator-button" data-value="8">
-          8
-        </button>
-
-        <button class="calculator-button" data-value="9">
-          9
-        </button>
-
-        <button class="calculator-button operator-button" data-value="*">
-          ×
-        </button>
-
-
-        <button class="calculator-button" data-value="4">
-          4
-        </button>
-
-        <button class="calculator-button" data-value="5">
-          5
-        </button>
-
-        <button class="calculator-button" data-value="6">
-          6
-        </button>
-
-        <button class="calculator-button operator-button" data-value="-">
-          −
-        </button>
-
-
-        <button class="calculator-button" data-value="1">
-          1
-        </button>
-
-        <button class="calculator-button" data-value="2">
-          2
-        </button>
-
-        <button class="calculator-button" data-value="3">
-          3
-        </button>
-
-        <button class="calculator-button operator-button" data-value="+">
-          +
-        </button>
-
-
-        <button class="calculator-button zero-button" data-value="0">
-          0
-        </button>
-
-        <button class="calculator-button" data-value=".">
-          .
-        </button>
-
-        <button class="calculator-button equals-button" data-action="calculate">
-          =
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- ========================= -->
-    <!-- SCIENTIFIC CALCULATOR -->
-    <!-- ========================= -->
-
-    <section id="scientific-mode" class="calculator-mode">
-
-      <div class="calculator-display">
-        <div id="scientific-expression" class="expression">
-          0
-        </div>
-
-        <div id="scientific-result" class="result">
-          0
-        </div>
-      </div>
-
-      <div class="scientific-buttons">
-
-        <button class="calculator-button" data-scientific="sin">
-          sin
-        </button>
-
-        <button class="calculator-button" data-scientific="cos">
-          cos
-        </button>
-
-        <button class="calculator-button" data-scientific="tan">
-          tan
-        </button>
-
-        <button class="calculator-button" data-scientific="log">
-          log
-        </button>
-
-
-        <button class="calculator-button" data-scientific="sqrt">
-          √
-        </button>
-
-        <button class="calculator-button" data-scientific="square">
-          x²
-        </button>
-
-        <button class="calculator-button" data-scientific="power">
-          xʸ
-        </button>
-
-        <button class="calculator-button" data-scientific="pi">
-          π
-        </button>
-
-
-        <button class="calculator-button" data-value="7">
-          7
-        </button>
-
-        <button class="calculator-button" data-value="8">
-          8
-        </button>
-
-        <button class="calculator-button" data-value="9">
-          9
-        </button>
-
-        <button class="calculator-button operator-button" data-value="/">
-          ÷
-        </button>
-
-
-        <button class="calculator-button" data-value="4">
-          4
-        </button>
-
-        <button class="calculator-button" data-value="5">
-          5
-        </button>
-
-        <button class="calculator-button" data-value="6">
-          6
-        </button>
-
-        <button class="calculator-button operator-button" data-value="*">
-          ×
-        </button>
-
-
-        <button class="calculator-button" data-value="1">
-          1
-        </button>
-
-        <button class="calculator-button" data-value="2">
-          2
-        </button>
-
-        <button class="calculator-button" data-value="3">
-          3
-        </button>
-
-        <button class="calculator-button operator-button" data-value="-">
-          −
-        </button>
-
-
-        <button class="calculator-button" data-value="0">
-          0
-        </button>
-
-        <button class="calculator-button" data-value=".">
-          .
-        </button>
-
-        <button class="calculator-button operator-button" data-value="+">
-          +
-        </button>
-
-        <button class="calculator-button equals-button" data-action="scientific-calculate">
-          =
-        </button>
-
-
-        <button class="calculator-button clear-button" data-action="scientific-clear">
-          AC
-        </button>
-
-        <button class="calculator-button" data-action="scientific-delete">
-          DEL
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- ========================= -->
-    <!-- CONVERTER -->
-    <!-- ========================= -->
-
-    <section id="converter-mode" class="calculator-mode">
-
-      <h2>Converter</h2>
-
-      <div class="converter-tabs">
-
-        <button class="converter-tab active" data-converter="currency">
-          Currency
-        </button>
-
-        <button class="converter-tab" data-converter="length">
-          Length
-        </button>
-
-        <button class="converter-tab" data-converter="weight">
-          Weight
-        </button>
-
-        <button class="converter-tab" data-converter="temperature">
-          Temperature
-        </button>
-
-      </div>
-
-
-      <!-- Currency Converter -->
-
-      <div id="currency-converter" class="converter-panel active-panel">
-
-        <h3>Currency Converter</h3>
-
-        <label for="currency-amount">
-          Amount
-        </label>
-
-        <input
-          type="number"
-          id="currency-amount"
-          placeholder="Enter amount"
-          inputmode="decimal"
-        >
-
-        <label for="from-currency">
-          From
-        </label>
-
-        <select id="from-currency">
-
-          <option value="NGN">
-            Nigerian Naira (NGN)
-          </option>
-
-          <option value="USD">
-            US Dollar (USD)
-          </option>
-
-          <option value="GBP">
-            British Pound (GBP)
-          </option>
-
-          <option value="EUR">
-            Euro (EUR)
-          </option>
-
-        </select>
-
-
-        <label for="to-currency">
-          To
-        </label>
-
-        <select id="to-currency">
-
-          <option value="USD">
-            US Dollar (USD)
-          </option>
-
-          <option value="NGN">
-            Nigerian Naira (NGN)
-          </option>
-
-          <option value="GBP">
-            British Pound (GBP)
-          </option>
-
-          <option value="EUR">
-            Euro (EUR)
-          </option>
-
-        </select>
-
-
-        <button id="convert-currency" class="convert-button">
-          Convert Currency
-        </button>
-
-        <div id="currency-result" class="conversion-result">
-          Result will appear here
-        </div>
-
-      </div>
-
-
-      <!-- Length Converter -->
-
-      <div id="length-converter" class="converter-panel">
-
-        <h3>Length Converter</h3>
-
-        <input
-          type="number"
-          id="length-value"
-          placeholder="Enter value"
-          inputmode="decimal"
-        >
-
-        <select id="length-from">
-          <option value="metre">Metre</option>
-          <option value="kilometre">Kilometre</option>
-          <option value="centimetre">Centimetre</option>
-          <option value="mile">Mile</option>
-          <option value="foot">Foot</option>
-          <option value="inch">Inch</option>
-        </select>
-
-        <select id="length-to">
-          <option value="metre">Metre</option>
-          <option value="kilometre">Kilometre</option>
-          <option value="centimetre">Centimetre</option>
-          <option value="mile">Mile</option>
-          <option value="foot">Foot</option>
-          <option value="inch">Inch</option>
-        </select>
-
-        <button id="convert-length" class="convert-button">
-          Convert Length
-        </button>
-
-        <div id="length-result" class="conversion-result">
-          Result will appear here
-        </div>
-
-      </div>
-
-
-      <!-- Weight Converter -->
-
-      <div id="weight-converter" class="converter-panel">
-
-        <h3>Weight Converter</h3>
-
-        <input
-          type="number"
-          id="weight-value"
-          placeholder="Enter value"
-          inputmode="decimal"
-        >
-
-        <select id="weight-from">
-          <option value="kilogram">Kilogram</option>
-          <option value="gram">Gram</option>
-          <option value="pound">Pound</option>
-          <option value="ounce">Ounce</option>
-        </select>
-
-        <select id="weight-to">
-          <option value="kilogram">Kilogram</option>
-          <option value="gram">Gram</option>
-          <option value="pound">Pound</option>
-          <option value="ounce">Ounce</option>
-        </select>
-
-        <button id="convert-weight" class="convert-button">
-          Convert Weight
-        </button>
-
-        <div id="weight-result" class="conversion-result">
-          Result will appear here
-        </div>
-
-      </div>
-
-
-      <!-- Temperature Converter -->
-
-      <div id="temperature-converter" class="converter-panel">
-
-        <h3>Temperature Converter</h3>
-
-        <input
-          type="number"
-          id="temperature-value"
-          placeholder="Enter temperature"
-          inputmode="decimal"
-        >
-
-        <select id="temperature-from">
-          <option value="celsius">Celsius</option>
-          <option value="fahrenheit">Fahrenheit</option>
-          <option value="kelvin">Kelvin</option>
-        </select>
-
-        <select id="temperature-to">
-          <option value="fahrenheit">Fahrenheit</option>
-          <option value="celsius">Celsius</option>
-          <option value="kelvin">Kelvin</option>
-        </select>
-
-        <button id="convert-temperature" class="convert-button">
-          Convert Temperature
-        </button>
-
-        <div id="temperature-result" class="conversion-result">
-          Result will appear here
-        </div>
-
-      </div>
-
-    </section>
+<!-- =========================================
+     KOLLINS AI
+========================================= -->
+
+<section
+  id="ai-mode"
+  class="calculator-mode"
+>
+
+  <div class="ai-header">
+
+    <h2>🤖 Kollins AI</h2>
+
+    <p>
+      Ask me anything. I can help with
+      mathematics, school subjects, coding,
+      general questions, writing, and more.
+    </p>
 
   </div>
 
 
-  <!-- JavaScript -->
+  <!-- AI Chat Messages -->
 
-  <script src="/calculator-app/script.js"></script>
+  <div
+    id="ai-chat"
+    class="ai-chat"
+  >
+
+    <div class="ai-message">
+      <strong>Kollins AI:</strong>
+
+      <p>
+        Hello! 👋 I'm Kollins AI.
+        Ask me a question and I'll do my best
+        to help you.
+      </p>
+    </div>
+
+  </div>
 
 
-  <!-- Service Worker -->
+  <!-- AI Input -->
 
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () {
-        navigator.serviceWorker.register("/calculator-app/sw.js")
-          .then(function () {
-            console.log("Service Worker registered successfully");
-          })
-          .catch(function (error) {
-            console.log("Service Worker registration failed:", error);
-          });
-      });
-    }
-  </script>
+  <div class="ai-input-area">
 
-</body>
-</html>
+    <textarea
+      id="ai-input"
+      placeholder="Ask Kollins AI anything..."
+      rows="3"
+    ></textarea>
+
+    <button
+      id="ai-send"
+      class="ai-send-button"
+      type="button"
+    >
+      Send
+    </button>
+
+  </div>
+
+
+  <!-- Clear Chat -->
+
+  <button
+    id="ai-clear"
+    class="ai-clear-button"
+    type="button"
+  >
+    Clear Chat
+  </button>
+
+</section>
