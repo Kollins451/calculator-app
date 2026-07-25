@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
@@ -13,836 +15,1004 @@
     rel="stylesheet"
     href="style.css"
   >
+
 </head>
+
 
 <body>
 
-  <!-- =========================================
-       HEADER
-  ========================================== -->
-
-  <header class="app-header">
-
-    <h1>🧮 Kollins Calculator</h1>
-
-    <p>
-      Calculate, convert, and learn with Kollins AI.
-    </p>
-
-  </header>
-
 
   <!-- =========================================
-       MODE NAVIGATION
+       APP
   ========================================== -->
 
-  <nav class="mode-navigation">
-
-    <button
-      class="mode-button active"
-      data-mode="basic"
-      type="button"
-    >
-      Basic
-    </button>
-
-    <button
-      class="mode-button"
-      data-mode="scientific"
-      type="button"
-    >
-      Scientific
-    </button>
-
-    <button
-      class="mode-button"
-      data-mode="converter"
-      type="button"
-    >
-      Converter
-    </button>
-
-    <button
-      class="mode-button"
-      data-mode="ai"
-      type="button"
-    >
-      🤖 Kollins AI
-    </button>
-
-  </nav>
-
-
-  <main class="calculator-container">
+  <div class="app-container">
 
 
     <!-- =========================================
-         BASIC CALCULATOR
+         HEADER
     ========================================== -->
 
-    <section
-      id="basic-mode"
-      class="calculator-mode active-mode"
-    >
+    <header class="app-header">
 
-      <div class="calculator-display">
+      <div class="header-title">
 
-        <div
-          id="basic-expression"
-          class="expression-display"
-        >
-          0
-        </div>
-
-        <div
-          id="basic-result"
-          class="result-display"
-        >
-          0
-        </div>
-
-      </div>
-
-
-      <div class="calculator-buttons">
-
-        <button
-          data-action="clear"
-          type="button"
-        >
-          AC
-        </button>
-
-        <button
-          data-action="delete"
-          type="button"
-        >
-          DEL
-        </button>
-
-        <button
-          data-value="%"
-          type="button"
-        >
-          %
-        </button>
-
-        <button
-          data-value="/"
-          type="button"
-        >
-          ÷
-        </button>
-
-
-        <button
-          data-value="7"
-          type="button"
-        >
-          7
-        </button>
-
-        <button
-          data-value="8"
-          type="button"
-        >
-          8
-        </button>
-
-        <button
-          data-value="9"
-          type="button"
-        >
-          9
-        </button>
-
-        <button
-          data-value="*"
-          type="button"
-        >
-          ×
-        </button>
-
-
-        <button
-          data-value="4"
-          type="button"
-        >
-          4
-        </button>
-
-        <button
-          data-value="5"
-          type="button"
-        >
-          5
-        </button>
-
-        <button
-          data-value="6"
-          type="button"
-        >
-          6
-        </button>
-
-        <button
-          data-value="-"
-          type="button"
-        >
-          −
-        </button>
-
-
-        <button
-          data-value="1"
-          type="button"
-        >
-          1
-        </button>
-
-        <button
-          data-value="2"
-          type="button"
-        >
-          2
-        </button>
-
-        <button
-          data-value="3"
-          type="button"
-        >
-          3
-        </button>
-
-        <button
-          data-value="+"
-          type="button"
-        >
-          +
-        </button>
-
-
-        <button
-          data-value="0"
-          type="button"
-          class="zero-button"
-        >
-          0
-        </button>
-
-        <button
-          data-value="."
-          type="button"
-        >
-          .
-        </button>
-
-        <button
-          data-action="calculate"
-          type="button"
-        >
-          =
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================
-         SCIENTIFIC CALCULATOR
-    ========================================== -->
-
-    <section
-      id="scientific-mode"
-      class="calculator-mode"
-    >
-
-      <div class="calculator-display">
-
-        <div
-          id="scientific-expression"
-          class="expression-display"
-        >
-          0
-        </div>
-
-        <div
-          id="scientific-result"
-          class="result-display"
-        >
-          0
-        </div>
-
-      </div>
-
-
-      <div class="scientific-buttons">
-
-        <button
-          data-scientific="sin"
-          type="button"
-        >
-          sin
-        </button>
-
-        <button
-          data-scientific="cos"
-          type="button"
-        >
-          cos
-        </button>
-
-        <button
-          data-scientific="tan"
-          type="button"
-        >
-          tan
-        </button>
-
-        <button
-          data-scientific="log"
-          type="button"
-        >
-          log
-        </button>
-
-        <button
-          data-scientific="sqrt"
-          type="button"
-        >
-          √
-        </button>
-
-        <button
-          data-scientific="square"
-          type="button"
-        >
-          x²
-        </button>
-
-        <button
-          data-scientific="power"
-          type="button"
-        >
-          xʸ
-        </button>
-
-        <button
-          data-scientific="pi"
-          type="button"
-        >
-          π
-        </button>
-
-
-        <button
-          data-value="7"
-          type="button"
-        >
-          7
-        </button>
-
-        <button
-          data-value="8"
-          type="button"
-        >
-          8
-        </button>
-
-        <button
-          data-value="9"
-          type="button"
-        >
-          9
-        </button>
-
-        <button
-          data-value="/"
-          type="button"
-        >
-          ÷
-        </button>
-
-
-        <button
-          data-value="4"
-          type="button"
-        >
-          4
-        </button>
-
-        <button
-          data-value="5"
-          type="button"
-        >
-          5
-        </button>
-
-        <button
-          data-value="6"
-          type="button"
-        >
-          6
-        </button>
-
-        <button
-          data-value="*"
-          type="button"
-        >
-          ×
-        </button>
-
-
-        <button
-          data-value="1"
-          type="button"
-        >
-          1
-        </button>
-
-        <button
-          data-value="2"
-          type="button"
-        >
-          2
-        </button>
-
-        <button
-          data-value="3"
-          type="button"
-        >
-          3
-        </button>
-
-        <button
-          data-value="-"
-          type="button"
-        >
-          −
-        </button>
-
-
-        <button
-          data-value="0"
-          type="button"
-        >
-          0
-        </button>
-
-        <button
-          data-value="."
-          type="button"
-        >
-          .
-        </button>
-
-        <button
-          data-value="+"
-          type="button"
-        >
-          +
-        </button>
-
-        <button
-          data-action="scientific-calculate"
-          type="button"
-        >
-          =
-        </button>
-
-
-        <button
-          data-action="scientific-clear"
-          type="button"
-        >
-          AC
-        </button>
-
-        <button
-          data-action="scientific-delete"
-          type="button"
-        >
-          DEL
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================
-         CONVERTER
-    ========================================== -->
-
-    <section
-      id="converter-mode"
-      class="calculator-mode"
-    >
-
-      <div class="converter-tabs">
-
-        <button
-          class="converter-tab active"
-          data-converter="length"
-          type="button"
-        >
-          Length
-        </button>
-
-        <button
-          class="converter-tab"
-          data-converter="weight"
-          type="button"
-        >
-          Weight
-        </button>
-
-        <button
-          class="converter-tab"
-          data-converter="temperature"
-          type="button"
-        >
-          Temperature
-        </button>
-
-        <button
-          class="converter-tab"
-          data-converter="currency"
-          type="button"
-        >
-          Currency
-        </button>
-
-      </div>
-
-
-      <!-- LENGTH -->
-
-      <div
-        id="length-converter"
-        class="converter-panel active-panel"
-      >
-
-        <h2>Length Converter</h2>
-
-        <input
-          id="length-value"
-          type="number"
-          placeholder="Enter value"
-        >
-
-        <select id="length-from">
-
-          <option value="metre">
-            Metre
-          </option>
-
-          <option value="kilometre">
-            Kilometre
-          </option>
-
-          <option value="centimetre">
-            Centimetre
-          </option>
-
-          <option value="mile">
-            Mile
-          </option>
-
-          <option value="foot">
-            Foot
-          </option>
-
-          <option value="inch">
-            Inch
-          </option>
-
-        </select>
-
-        <select id="length-to">
-
-          <option value="metre">
-            Metre
-          </option>
-
-          <option value="kilometre">
-            Kilometre
-          </option>
-
-          <option value="centimetre">
-            Centimetre
-          </option>
-
-          <option value="mile">
-            Mile
-          </option>
-
-          <option value="foot">
-            Foot
-          </option>
-
-          <option value="inch">
-            Inch
-          </option>
-
-        </select>
-
-        <button
-          id="convert-length"
-          type="button"
-        >
-          Convert
-        </button>
-
-        <div
-          id="length-result"
-          class="converter-result"
-        >
-          Result will appear here
-        </div>
-
-      </div>
-
-
-      <!-- WEIGHT -->
-
-      <div
-        id="weight-converter"
-        class="converter-panel"
-      >
-
-        <h2>Weight Converter</h2>
-
-        <input
-          id="weight-value"
-          type="number"
-          placeholder="Enter value"
-        >
-
-        <select id="weight-from">
-
-          <option value="kilogram">
-            Kilogram
-          </option>
-
-          <option value="gram">
-            Gram
-          </option>
-
-          <option value="pound">
-            Pound
-          </option>
-
-          <option value="ounce">
-            Ounce
-          </option>
-
-        </select>
-
-        <select id="weight-to">
-
-          <option value="kilogram">
-            Kilogram
-          </option>
-
-          <option value="gram">
-            Gram
-          </option>
-
-          <option value="pound">
-            Pound
-          </option>
-
-          <option value="ounce">
-            Ounce
-          </option>
-
-        </select>
-
-        <button
-          id="convert-weight"
-          type="button"
-        >
-          Convert
-        </button>
-
-        <div
-          id="weight-result"
-          class="converter-result"
-        >
-          Result will appear here
-        </div>
-
-      </div>
-
-
-      <!-- TEMPERATURE -->
-
-      <div
-        id="temperature-converter"
-        class="converter-panel"
-      >
-
-        <h2>Temperature Converter</h2>
-
-        <input
-          id="temperature-value"
-          type="number"
-          placeholder="Enter temperature"
-        >
-
-        <select id="temperature-from">
-
-          <option value="celsius">
-            Celsius
-          </option>
-
-          <option value="fahrenheit">
-            Fahrenheit
-          </option>
-
-          <option value="kelvin">
-            Kelvin
-          </option>
-
-        </select>
-
-        <select id="temperature-to">
-
-          <option value="celsius">
-            Celsius
-          </option>
-
-          <option value="fahrenheit">
-            Fahrenheit
-          </option>
-
-          <option value="kelvin">
-            Kelvin
-          </option>
-
-        </select>
-
-        <button
-          id="convert-temperature"
-          type="button"
-        >
-          Convert
-        </button>
-
-        <div
-          id="temperature-result"
-          class="converter-result"
-        >
-          Result will appear here
-        </div>
-
-      </div>
-
-
-      <!-- CURRENCY -->
-
-      <div
-        id="currency-converter"
-        class="converter-panel"
-      >
-
-        <h2>Currency Converter</h2>
-
-        <input
-          id="currency-amount"
-          type="number"
-          placeholder="Enter amount"
-        >
-
-        <select id="from-currency">
-
-          <option value="NGN">
-            Nigerian Naira (₦)
-          </option>
-
-          <option value="USD">
-            US Dollar ($)
-          </option>
-
-          <option value="GBP">
-            British Pound (£)
-          </option>
-
-          <option value="EUR">
-            Euro (€)
-          </option>
-
-        </select>
-
-        <select id="to-currency">
-
-          <option value="NGN">
-            Nigerian Naira (₦)
-          </option>
-
-          <option value="USD">
-            US Dollar ($)
-          </option>
-
-          <option value="GBP">
-            British Pound (£)
-          </option>
-
-          <option value="EUR">
-            Euro (€)
-          </option>
-
-        </select>
-
-        <button
-          id="convert-currency"
-          type="button"
-        >
-          Convert
-        </button>
-
-        <div
-          id="currency-result"
-          class="converter-result"
-        >
-          Result will appear here
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================
-         KOLLINS AI
-    ========================================== -->
-
-    <section
-      id="ai-mode"
-      class="calculator-mode"
-    >
-
-      <div class="ai-header">
-
-        <h2>🤖 Kollins AI</h2>
+        <h1>
+          🧮 Kollins Calculator
+        </h1>
 
         <p>
-          Ask me anything. I can help with
-          mathematics, school subjects, coding,
-          general questions, writing, and more.
+          Calculate, convert, and solve with ease.
         </p>
 
       </div>
 
 
-      <!-- AI Chat Messages -->
+      <!-- AI BUTTON -->
+
+      <button
+        id="open-ai"
+        class="ai-icon-button"
+        type="button"
+        aria-label="Open Kollins AI"
+      >
+        🤖
+      </button>
+
+    </header>
+
+
+
+    <!-- =========================================
+         CALCULATOR APP
+    ========================================== -->
+
+    <main
+      id="calculator-app"
+      class="calculator-app"
+    >
+
+
+      <!-- =======================================
+           CALCULATOR MODE BUTTONS
+      ======================================== -->
+
+      <nav class="mode-navigation">
+
+
+        <button
+          class="mode-button active"
+          data-mode="basic"
+          type="button"
+        >
+          Basic
+        </button>
+
+
+        <button
+          class="mode-button"
+          data-mode="scientific"
+          type="button"
+        >
+          Scientific
+        </button>
+
+
+        <button
+          class="mode-button"
+          data-mode="converter"
+          type="button"
+        >
+          Converter
+        </button>
+
+
+      </nav>
+
+
+
+      <!-- =======================================
+           BASIC CALCULATOR
+      ======================================== -->
+
+      <section
+        id="basic-mode"
+        class="calculator-mode active-mode"
+      >
+
+
+        <div class="calculator-display">
+
+
+          <div
+            id="basic-expression"
+            class="expression-display"
+          >
+            0
+          </div>
+
+
+          <div
+            id="basic-result"
+            class="result-display"
+          >
+            0
+          </div>
+
+
+        </div>
+
+
+
+        <div class="calculator-buttons">
+
+
+          <button
+            data-action="clear"
+            type="button"
+          >
+            AC
+          </button>
+
+
+          <button
+            data-action="delete"
+            type="button"
+          >
+            DEL
+          </button>
+
+
+          <button
+            data-value="%"
+            type="button"
+          >
+            %
+          </button>
+
+
+          <button
+            data-value="/"
+            type="button"
+          >
+            ÷
+          </button>
+
+
+
+          <button
+            data-value="7"
+            type="button"
+          >
+            7
+          </button>
+
+
+          <button
+            data-value="8"
+            type="button"
+          >
+            8
+          </button>
+
+
+          <button
+            data-value="9"
+            type="button"
+          >
+            9
+          </button>
+
+
+          <button
+            data-value="*"
+            type="button"
+          >
+            ×
+          </button>
+
+
+
+          <button
+            data-value="4"
+            type="button"
+          >
+            4
+          </button>
+
+
+          <button
+            data-value="5"
+            type="button"
+          >
+            5
+          </button>
+
+
+          <button
+            data-value="6"
+            type="button"
+          >
+            6
+          </button>
+
+
+          <button
+            data-value="-"
+            type="button"
+          >
+            −
+          </button>
+
+
+
+          <button
+            data-value="1"
+            type="button"
+          >
+            1
+          </button>
+
+
+          <button
+            data-value="2"
+            type="button"
+          >
+            2
+          </button>
+
+
+          <button
+            data-value="3"
+            type="button"
+          >
+            3
+          </button>
+
+
+          <button
+            data-value="+"
+            type="button"
+          >
+            +
+          </button>
+
+
+
+          <button
+            data-value="0"
+            class="zero-button"
+            type="button"
+          >
+            0
+          </button>
+
+
+          <button
+            data-value="."
+            type="button"
+          >
+            .
+          </button>
+
+
+          <button
+            data-action="calculate"
+            type="button"
+          >
+            =
+          </button>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- =======================================
+           SCIENTIFIC CALCULATOR
+      ======================================== -->
+
+      <section
+        id="scientific-mode"
+        class="calculator-mode"
+      >
+
+
+        <div class="calculator-display">
+
+
+          <div
+            id="scientific-expression"
+            class="expression-display"
+          >
+            0
+          </div>
+
+
+          <div
+            id="scientific-result"
+            class="result-display"
+          >
+            0
+          </div>
+
+
+        </div>
+
+
+
+        <div class="scientific-buttons">
+
+
+          <button
+            data-scientific="sin"
+            type="button"
+          >
+            sin
+          </button>
+
+
+          <button
+            data-scientific="cos"
+            type="button"
+          >
+            cos
+          </button>
+
+
+          <button
+            data-scientific="tan"
+            type="button"
+          >
+            tan
+          </button>
+
+
+          <button
+            data-scientific="log"
+            type="button"
+          >
+            log
+          </button>
+
+
+          <button
+            data-scientific="sqrt"
+            type="button"
+          >
+            √
+          </button>
+
+
+          <button
+            data-scientific="square"
+            type="button"
+          >
+            x²
+          </button>
+
+
+          <button
+            data-scientific="power"
+            type="button"
+          >
+            xʸ
+          </button>
+
+
+          <button
+            data-scientific="pi"
+            type="button"
+          >
+            π
+          </button>
+
+
+
+          <button
+            data-value="7"
+            type="button"
+          >
+            7
+          </button>
+
+
+          <button
+            data-value="8"
+            type="button"
+          >
+            8
+          </button>
+
+
+          <button
+            data-value="9"
+            type="button"
+          >
+            9
+          </button>
+
+
+          <button
+            data-value="/"
+            type="button"
+          >
+            ÷
+          </button>
+
+
+
+          <button
+            data-value="4"
+            type="button"
+          >
+            4
+          </button>
+
+
+          <button
+            data-value="5"
+            type="button"
+          >
+            5
+          </button>
+
+
+          <button
+            data-value="6"
+            type="button"
+          >
+            6
+          </button>
+
+
+          <button
+            data-value="*"
+            type="button"
+          >
+            ×
+          </button>
+
+
+
+          <button
+            data-value="1"
+            type="button"
+          >
+            1
+          </button>
+
+
+          <button
+            data-value="2"
+            type="button"
+          >
+            2
+          </button>
+
+
+          <button
+            data-value="3"
+            type="button"
+          >
+            3
+          </button>
+
+
+          <button
+            data-value="-"
+            type="button"
+          >
+            −
+          </button>
+
+
+
+          <button
+            data-value="0"
+            type="button"
+          >
+            0
+          </button>
+
+
+          <button
+            data-value="."
+            type="button"
+          >
+            .
+          </button>
+
+
+          <button
+            data-value="+"
+            type="button"
+          >
+            +
+          </button>
+
+
+          <button
+            data-action="scientific-calculate"
+            type="button"
+          >
+            =
+          </button>
+
+
+
+          <button
+            data-action="scientific-clear"
+            type="button"
+          >
+            AC
+          </button>
+
+
+          <button
+            data-action="scientific-delete"
+            type="button"
+          >
+            DEL
+          </button>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- =======================================
+           CONVERTER
+      ======================================== -->
+
+      <section
+        id="converter-mode"
+        class="calculator-mode"
+      >
+
+
+        <div class="converter-tabs">
+
+
+          <button
+            class="converter-tab active"
+            data-converter="length"
+            type="button"
+          >
+            Length
+          </button>
+
+
+          <button
+            class="converter-tab"
+            data-converter="weight"
+            type="button"
+          >
+            Weight
+          </button>
+
+
+          <button
+            class="converter-tab"
+            data-converter="temperature"
+            type="button"
+          >
+            Temperature
+          </button>
+
+
+          <button
+            class="converter-tab"
+            data-converter="currency"
+            type="button"
+          >
+            Currency
+          </button>
+
+
+        </div>
+
+
+
+        <!-- LENGTH -->
+
+        <div
+          id="length-converter"
+          class="converter-panel active-panel"
+        >
+
+
+          <h2>
+            Length Converter
+          </h2>
+
+
+          <input
+            id="length-value"
+            type="number"
+            placeholder="Enter value"
+          >
+
+
+          <select id="length-from">
+
+            <option value="metre">
+              Metre
+            </option>
+
+            <option value="kilometre">
+              Kilometre
+            </option>
+
+            <option value="centimetre">
+              Centimetre
+            </option>
+
+            <option value="mile">
+              Mile
+            </option>
+
+            <option value="foot">
+              Foot
+            </option>
+
+            <option value="inch">
+              Inch
+            </option>
+
+          </select>
+
+
+          <select id="length-to">
+
+            <option value="metre">
+              Metre
+            </option>
+
+            <option value="kilometre">
+              Kilometre
+            </option>
+
+            <option value="centimetre">
+              Centimetre
+            </option>
+
+            <option value="mile">
+              Mile
+            </option>
+
+            <option value="foot">
+              Foot
+            </option>
+
+            <option value="inch">
+              Inch
+            </option>
+
+          </select>
+
+
+          <button
+            id="convert-length"
+            type="button"
+          >
+            Convert
+          </button>
+
+
+          <div
+            id="length-result"
+            class="converter-result"
+          >
+            Result will appear here
+          </div>
+
+
+        </div>
+
+
+
+        <!-- WEIGHT -->
+
+        <div
+          id="weight-converter"
+          class="converter-panel"
+        >
+
+
+          <h2>
+            Weight Converter
+          </h2>
+
+
+          <input
+            id="weight-value"
+            type="number"
+            placeholder="Enter value"
+          >
+
+
+          <select id="weight-from">
+
+            <option value="kilogram">
+              Kilogram
+            </option>
+
+            <option value="gram">
+              Gram
+            </option>
+
+            <option value="pound">
+              Pound
+            </option>
+
+            <option value="ounce">
+              Ounce
+            </option>
+
+          </select>
+
+
+          <select id="weight-to">
+
+            <option value="kilogram">
+              Kilogram
+            </option>
+
+            <option value="gram">
+              Gram
+            </option>
+
+            <option value="pound">
+              Pound
+            </option>
+
+            <option value="ounce">
+              Ounce
+            </option>
+
+          </select>
+
+
+          <button
+            id="convert-weight"
+            type="button"
+          >
+            Convert
+          </button>
+
+
+          <div
+            id="weight-result"
+            class="converter-result"
+          >
+            Result will appear here
+          </div>
+
+
+        </div>
+
+
+
+        <!-- TEMPERATURE -->
+
+        <div
+          id="temperature-converter"
+          class="converter-panel"
+        >
+
+
+          <h2>
+            Temperature Converter
+          </h2>
+
+
+          <input
+            id="temperature-value"
+            type="number"
+            placeholder="Enter temperature"
+          >
+
+
+          <select id="temperature-from">
+
+            <option value="celsius">
+              Celsius
+            </option>
+
+            <option value="fahrenheit">
+              Fahrenheit
+            </option>
+
+            <option value="kelvin">
+              Kelvin
+            </option>
+
+          </select>
+
+
+          <select id="temperature-to">
+
+            <option value="celsius">
+              Celsius
+            </option>
+
+            <option value="fahrenheit">
+              Fahrenheit
+            </option>
+
+            <option value="kelvin">
+              Kelvin
+            </option>
+
+          </select>
+
+
+          <button
+            id="convert-temperature"
+            type="button"
+          >
+            Convert
+          </button>
+
+
+          <div
+            id="temperature-result"
+            class="converter-result"
+          >
+            Result will appear here
+          </div>
+
+
+        </div>
+
+
+
+        <!-- CURRENCY -->
+
+        <div
+          id="currency-converter"
+          class="converter-panel"
+        >
+
+
+          <h2>
+            Currency Converter
+          </h2>
+
+
+          <input
+            id="currency-amount"
+            type="number"
+            placeholder="Enter amount"
+          >
+
+
+          <select id="from-currency">
+
+            <option value="NGN">
+              Nigerian Naira (₦)
+            </option>
+
+            <option value="USD">
+              US Dollar ($)
+            </option>
+
+            <option value="GBP">
+              British Pound (£)
+            </option>
+
+            <option value="EUR">
+              Euro (€)
+            </option>
+
+          </select>
+
+
+          <select id="to-currency">
+
+            <option value="NGN">
+              Nigerian Naira (₦)
+            </option>
+
+            <option value="USD">
+              US Dollar ($)
+            </option>
+
+            <option value="GBP">
+              British Pound (£)
+            </option>
+
+            <option value="EUR">
+              Euro (€)
+            </option>
+
+          </select>
+
+
+          <button
+            id="convert-currency"
+            type="button"
+          >
+            Convert
+          </button>
+
+
+          <div
+            id="currency-result"
+            class="converter-result"
+          >
+            Result will appear here
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         KOLLINS AI APP
+    ========================================== -->
+
+    <main
+      id="ai-app"
+      class="ai-app"
+      hidden
+    >
+
+
+      <!-- AI HEADER -->
+
+      <div class="ai-header">
+
+
+        <button
+          id="back-to-calculator"
+          class="back-button"
+          type="button"
+        >
+          ← Calculator
+        </button>
+
+
+        <div class="ai-title">
+
+          <h2>
+            🤖 Kollins AI
+          </h2>
+
+          <p>
+            Ask me anything. I can help with
+            mathematics, school subjects, coding,
+            general questions, writing, and more.
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- AI CHAT -->
 
       <div
         id="ai-chat"
         class="ai-chat"
       >
+
 
         <div class="ai-message">
 
@@ -850,26 +1020,32 @@
             Kollins AI:
           </strong>
 
+
           <p>
             Hello! 👋 I'm Kollins AI.
             Ask me a question and I'll do my best
             to help you.
           </p>
 
+
         </div>
+
 
       </div>
 
 
-      <!-- AI Input -->
+
+      <!-- AI INPUT -->
 
       <div class="ai-input-area">
+
 
         <textarea
           id="ai-input"
           placeholder="Ask Kollins AI anything..."
           rows="3"
         ></textarea>
+
 
         <button
           id="ai-send"
@@ -879,10 +1055,12 @@
           Send
         </button>
 
+
       </div>
 
 
-      <!-- Clear Chat -->
+
+      <!-- CLEAR CHAT -->
 
       <button
         id="ai-clear"
@@ -892,32 +1070,38 @@
         Clear Chat
       </button>
 
-    </section>
+
+    </main>
 
 
-  </main>
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="app-footer">
+
+      <p>
+        © 2026 Kollins Calculator
+      </p>
+
+    </footer>
 
 
-  <!-- =========================================
-       FOOTER
-  ========================================== -->
+  </div>
 
-  <footer class="app-footer">
-
-    <p>
-      © 2026 Kollins Calculator
-    </p>
-
-    <p>
-      Built with HTML, CSS, JavaScript & Kollins AI.
-    </p>
-
-  </footer>
 
 
   <!-- =========================================
        JAVASCRIPT
   ========================================== -->
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>
 
   <script src="script.js"></script>
 
