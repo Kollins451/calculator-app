@@ -1,14 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
   <meta charset="UTF-8">
 
-  <!-- Prevent unwanted mobile zoom -->
+  <!-- Mobile viewport and zoom prevention -->
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
   >
 
   <meta
@@ -23,22 +22,40 @@
     href="style.css"
   >
 
+  <!-- Mobile touch and zoom protection -->
   <style>
-    /* Prevent mobile browser zoom on form controls */
-    input,
-    textarea,
-    select,
-    button {
-      font-size: 16px;
-    }
 
     html {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
       -webkit-text-size-adjust: 100%;
+      touch-action: manipulation;
     }
 
     body {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      overflow-x: hidden;
       touch-action: manipulation;
+      overscroll-behavior-x: none;
     }
+
+    button,
+    input,
+    textarea,
+    select {
+      font-size: 16px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
   </style>
 
 </head>
@@ -164,39 +181,120 @@
 
         <div class="calculator-buttons">
 
-          <button data-action="clear" type="button">
+          <button
+            data-action="clear"
+            type="button"
+          >
             AC
           </button>
 
-          <button data-action="delete" type="button">
+          <button
+            data-action="delete"
+            type="button"
+          >
             DEL
           </button>
 
-          <button data-value="%" type="button">
+          <button
+            data-value="%"
+            type="button"
+          >
             %
           </button>
 
-          <button data-value="/" type="button">
+          <button
+            data-value="/"
+            type="button"
+          >
             ÷
           </button>
 
 
-          <button data-value="7" type="button">7</button>
-          <button data-value="8" type="button">8</button>
-          <button data-value="9" type="button">9</button>
-          <button data-value="*" type="button">×</button>
+          <button
+            data-value="7"
+            type="button"
+          >
+            7
+          </button>
+
+          <button
+            data-value="8"
+            type="button"
+          >
+            8
+          </button>
+
+          <button
+            data-value="9"
+            type="button"
+          >
+            9
+          </button>
+
+          <button
+            data-value="*"
+            type="button"
+          >
+            ×
+          </button>
 
 
-          <button data-value="4" type="button">4</button>
-          <button data-value="5" type="button">5</button>
-          <button data-value="6" type="button">6</button>
-          <button data-value="-" type="button">−</button>
+          <button
+            data-value="4"
+            type="button"
+          >
+            4
+          </button>
+
+          <button
+            data-value="5"
+            type="button"
+          >
+            5
+          </button>
+
+          <button
+            data-value="6"
+            type="button"
+          >
+            6
+          </button>
+
+          <button
+            data-value="-"
+            type="button"
+          >
+            −
+          </button>
 
 
-          <button data-value="1" type="button">1</button>
-          <button data-value="2" type="button">2</button>
-          <button data-value="3" type="button">3</button>
-          <button data-value="+" type="button">+</button>
+          <button
+            data-value="1"
+            type="button"
+          >
+            1
+          </button>
+
+          <button
+            data-value="2"
+            type="button"
+          >
+            2
+          </button>
+
+          <button
+            data-value="3"
+            type="button"
+          >
+            3
+          </button>
+
+          <button
+            data-value="+"
+            type="button"
+          >
+            +
+          </button>
 
 
           <button
@@ -207,7 +305,10 @@
             0
           </button>
 
-          <button data-value="." type="button">
+          <button
+            data-value="."
+            type="button"
+          >
             .
           </button>
 
@@ -254,60 +355,170 @@
 
         <div class="scientific-buttons">
 
-          <button data-scientific="sin" type="button">
+          <button
+            data-scientific="sin"
+            type="button"
+          >
             sin
           </button>
 
-          <button data-scientific="cos" type="button">
+          <button
+            data-scientific="cos"
+            type="button"
+          >
             cos
           </button>
 
-          <button data-scientific="tan" type="button">
+          <button
+            data-scientific="tan"
+            type="button"
+          >
             tan
           </button>
 
-          <button data-scientific="log" type="button">
+          <button
+            data-scientific="log"
+            type="button"
+          >
             log
           </button>
 
-          <button data-scientific="sqrt" type="button">
+          <button
+            data-scientific="sqrt"
+            type="button"
+          >
             √
           </button>
 
-          <button data-scientific="square" type="button">
+          <button
+            data-scientific="square"
+            type="button"
+          >
             x²
           </button>
 
-          <button data-scientific="power" type="button">
+          <button
+            data-scientific="power"
+            type="button"
+          >
             xʸ
           </button>
 
-          <button data-scientific="pi" type="button">
+          <button
+            data-scientific="pi"
+            type="button"
+          >
             π
           </button>
 
 
-          <button data-value="7" type="button">7</button>
-          <button data-value="8" type="button">8</button>
-          <button data-value="9" type="button">9</button>
-          <button data-value="/" type="button">÷</button>
+          <button
+            data-value="7"
+            type="button"
+          >
+            7
+          </button>
+
+          <button
+            data-value="8"
+            type="button"
+          >
+            8
+          </button>
+
+          <button
+            data-value="9"
+            type="button"
+          >
+            9
+          </button>
+
+          <button
+            data-value="/"
+            type="button"
+          >
+            ÷
+          </button>
 
 
-          <button data-value="4" type="button">4</button>
-          <button data-value="5" type="button">5</button>
-          <button data-value="6" type="button">6</button>
-          <button data-value="*" type="button">×</button>
+          <button
+            data-value="4"
+            type="button"
+          >
+            4
+          </button>
+
+          <button
+            data-value="5"
+            type="button"
+          >
+            5
+          </button>
+
+          <button
+            data-value="6"
+            type="button"
+          >
+            6
+          </button>
+
+          <button
+            data-value="*"
+            type="button"
+          >
+            ×
+          </button>
 
 
-          <button data-value="1" type="button">1</button>
-          <button data-value="2" type="button">2</button>
-          <button data-value="3" type="button">3</button>
-          <button data-value="-" type="button">−</button>
+          <button
+            data-value="1"
+            type="button"
+          >
+            1
+          </button>
+
+          <button
+            data-value="2"
+            type="button"
+          >
+            2
+          </button>
+
+          <button
+            data-value="3"
+            type="button"
+          >
+            3
+          </button>
+
+          <button
+            data-value="-"
+            type="button"
+          >
+            −
+          </button>
 
 
-          <button data-value="0" type="button">0</button>
-          <button data-value="." type="button">.</button>
-          <button data-value="+" type="button">+</button>
+          <button
+            data-value="0"
+            type="button"
+          >
+            0
+          </button>
+
+          <button
+            data-value="."
+            type="button"
+          >
+            .
+          </button>
+
+          <button
+            data-value="+"
+            type="button"
+          >
+            +
+          </button>
 
           <button
             data-action="scientific-calculate"
@@ -323,7 +534,6 @@
           >
             AC
           </button>
-
 
           <button
             data-action="scientific-delete"
@@ -357,7 +567,6 @@
             Length
           </button>
 
-
           <button
             class="converter-tab"
             data-converter="weight"
@@ -366,7 +575,6 @@
             Weight
           </button>
 
-
           <button
             class="converter-tab"
             data-converter="temperature"
@@ -374,7 +582,6 @@
           >
             Temperature
           </button>
-
 
           <button
             class="converter-tab"
@@ -402,6 +609,7 @@
           <input
             id="length-value"
             type="number"
+            inputmode="decimal"
             placeholder="Enter value"
           >
 
@@ -496,6 +704,7 @@
           <input
             id="weight-value"
             type="number"
+            inputmode="decimal"
             placeholder="Enter value"
           >
 
@@ -575,6 +784,7 @@
           <input
             id="temperature-value"
             type="number"
+            inputmode="decimal"
             placeholder="Enter temperature"
           >
 
@@ -646,6 +856,7 @@
           <input
             id="currency-amount"
             type="number"
+            inputmode="decimal"
             placeholder="Enter amount"
           >
 
