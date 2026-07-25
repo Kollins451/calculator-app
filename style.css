@@ -380,13 +380,26 @@ body {
    KOLLINS AI SCREEN
 ========================================= */
 
+/*
+   IMPORTANT:
+   AI is hidden by default.
+   It only appears when JavaScript
+   removes the "hidden" attribute.
+*/
+
 .ai-app {
+  display: none;
   width: 100%;
 }
 
 
 .ai-app[hidden] {
-  display: none;
+  display: none !important;
+}
+
+
+.ai-app:not([hidden]) {
+  display: block;
 }
 
 
@@ -715,11 +728,6 @@ body {
 
   .scientific-buttons button {
     min-height: 46px;
-    font-size: 13px;
-  }
-
-
-  .mode-button {
     font-size: 13px;
   }
 
