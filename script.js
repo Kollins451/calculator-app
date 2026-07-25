@@ -101,7 +101,11 @@ const backToCalculatorButton =
 
 /* Open AI */
 
-if (openAIButton) {
+if (
+  openAIButton &&
+  calculatorApp &&
+  aiApp
+) {
 
   openAIButton.addEventListener(
     "click",
@@ -124,7 +128,11 @@ if (openAIButton) {
 
 /* Return to Calculator */
 
-if (backToCalculatorButton) {
+if (
+  backToCalculatorButton &&
+  calculatorApp &&
+  aiApp
+) {
 
   backToCalculatorButton.addEventListener(
     "click",
@@ -262,11 +270,19 @@ function clearBasicCalculator() {
 
   basicExpression = "";
 
-  basicExpressionDisplay.textContent =
-    "0";
+  if (basicExpressionDisplay) {
 
-  basicResultDisplay.textContent =
-    "0";
+    basicExpressionDisplay.textContent =
+      "0";
+
+  }
+
+  if (basicResultDisplay) {
+
+    basicResultDisplay.textContent =
+      "0";
+
+  }
 
 }
 
@@ -318,20 +334,32 @@ function calculateBasic() {
       Number.isFinite(result)
     ) {
 
-      basicResultDisplay.textContent =
-        formatNumber(result);
+      if (basicResultDisplay) {
+
+        basicResultDisplay.textContent =
+          formatNumber(result);
+
+      }
 
     } else {
 
-      basicResultDisplay.textContent =
-        "Error";
+      if (basicResultDisplay) {
+
+        basicResultDisplay.textContent =
+          "Error";
+
+      }
 
     }
 
   } catch (error) {
 
-    basicResultDisplay.textContent =
-      "Error";
+    if (basicResultDisplay) {
+
+      basicResultDisplay.textContent =
+        "Error";
+
+    }
 
   }
 
@@ -461,11 +489,19 @@ function clearScientificCalculator() {
 
   scientificExpression = "";
 
-  scientificExpressionDisplay.textContent =
-    "0";
+  if (scientificExpressionDisplay) {
 
-  scientificResultDisplay.textContent =
-    "0";
+    scientificExpressionDisplay.textContent =
+      "0";
+
+  }
+
+  if (scientificResultDisplay) {
+
+    scientificResultDisplay.textContent =
+      "0";
+
+  }
 
 }
 
@@ -528,20 +564,32 @@ function calculateScientific() {
       Number.isFinite(result)
     ) {
 
-      scientificResultDisplay.textContent =
-        formatNumber(result);
+      if (scientificResultDisplay) {
+
+        scientificResultDisplay.textContent =
+          formatNumber(result);
+
+      }
 
     } else {
 
-      scientificResultDisplay.textContent =
-        "Error";
+      if (scientificResultDisplay) {
+
+        scientificResultDisplay.textContent =
+          "Error";
+
+      }
 
     }
 
   } catch (error) {
 
-    scientificResultDisplay.textContent =
-      "Error";
+    if (scientificResultDisplay) {
+
+      scientificResultDisplay.textContent =
+        "Error";
+
+    }
 
   }
 
@@ -1374,6 +1422,11 @@ function addAIMessage(
   message
 ) {
 
+  if (!aiChat) {
+    return;
+  }
+
+
   const messageDiv =
     document.createElement(
       "div"
@@ -1413,6 +1466,11 @@ function addAIMessage(
 function addUserMessage(
   message
 ) {
+
+  if (!aiChat) {
+    return;
+  }
+
 
   const messageDiv =
     document.createElement(
@@ -1454,6 +1512,17 @@ function addUserMessage(
 /* Send AI Message */
 
 async function sendAIMessage() {
+
+  if (
+    !aiInput ||
+    !aiSendButton ||
+    !aiChat
+  ) {
+
+    return;
+
+  }
+
 
   const message =
     aiInput.value.trim();
@@ -1527,8 +1596,12 @@ async function sendAIMessage() {
     }
 
 
+    /* IMPORTANT:
+       Your API returns "answer",
+       not "reply". */
+
     addAIMessage(
-      data.reply ||
+      data.answer ||
       "I couldn't generate a response."
     );
 
@@ -1604,7 +1677,10 @@ if (aiInput) {
    CLEAR AI CHAT
 ========================================= */
 
-if (aiClearButton) {
+if (
+  aiClearButton &&
+  aiChat
+) {
 
   aiClearButton.addEventListener(
     "click",
