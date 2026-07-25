@@ -5,6 +5,21 @@
 
 
 /* =========================================
+   NUMBER FORMATTING
+========================================= */
+
+function formatNumber(value) {
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    return "Error";
+  }
+
+  return new Intl.NumberFormat("en-US", {
+    maximumFractionDigits: 10
+  }).format(value);
+}
+
+
+/* =========================================
    MODE SWITCHING
 ========================================= */
 
@@ -12,9 +27,7 @@ const modeButtons = document.querySelectorAll(".mode-button");
 const calculatorModes = document.querySelectorAll(".calculator-mode");
 
 modeButtons.forEach(button => {
-
   button.addEventListener("click", () => {
-
     const selectedMode = button.dataset.mode;
 
     modeButtons.forEach(btn => {
@@ -27,16 +40,13 @@ modeButtons.forEach(button => {
 
     button.classList.add("active");
 
-    const selectedSection = document.getElementById(
-      `${selectedMode}-mode`
-    );
+    const selectedSection =
+      document.getElementById(`${selectedMode}-mode`);
 
     if (selectedSection) {
       selectedSection.classList.add("active-mode");
     }
-
   });
-
 });
 
 
@@ -54,50 +64,39 @@ const basicResultDisplay =
 
 
 function updateBasicDisplay() {
-
   basicExpressionDisplay.textContent =
     basicExpression || "0";
-
 }
 
 
 function addToBasicExpression(value) {
-
   basicExpression += value;
-
   updateBasicDisplay();
-
 }
 
 
 function clearBasicCalculator() {
-
   basicExpression = "";
 
   basicExpressionDisplay.textContent = "0";
   basicResultDisplay.textContent = "0";
-
 }
 
 
 function deleteBasicCharacter() {
-
   basicExpression =
     basicExpression.slice(0, -1);
 
   updateBasicDisplay();
-
 }
 
 
 function calculateBasic() {
-
   if (!basicExpression) {
     return;
   }
 
   try {
-
     const safeExpression =
       basicExpression
         .replace(/×/g, "*")
@@ -110,26 +109,15 @@ function calculateBasic() {
       typeof result === "number" &&
       Number.isFinite(result)
     ) {
-
       basicResultDisplay.textContent =
-        Number.isInteger(result)
-          ? result
-          : Number(result.toFixed(10));
-
+        formatNumber(result);
     } else {
-
-      basicResultDisplay.textContent =
-        "Error";
-
+      basicResultDisplay.textContent = "Error";
     }
 
   } catch (error) {
-
-    basicResultDisplay.textContent =
-      "Error";
-
+    basicResultDisplay.textContent = "Error";
   }
-
 }
 
 
@@ -138,31 +126,36 @@ function calculateBasic() {
 document
   .querySelectorAll("#basic-mode [data-value]")
   .forEach(button => {
-
     button.addEventListener("click", () => {
-
       addToBasicExpression(
         button.dataset.value
       );
-
     });
-
   });
 
 
 document
   .querySelector("#basic-mode [data-action='clear']")
-  .addEventListener("click", clearBasicCalculator);
+  .addEventListener(
+    "click",
+    clearBasicCalculator
+  );
 
 
 document
   .querySelector("#basic-mode [data-action='delete']")
-  .addEventListener("click", deleteBasicCharacter);
+  .addEventListener(
+    "click",
+    deleteBasicCharacter
+  );
 
 
 document
   .querySelector("#basic-mode [data-action='calculate']")
-  .addEventListener("click", calculateBasic);
+  .addEventListener(
+    "click",
+    calculateBasic
+  );
 
 
 /* =========================================
@@ -183,24 +176,18 @@ const scientificResultDisplay =
 
 
 function updateScientificDisplay() {
-
   scientificExpressionDisplay.textContent =
     scientificExpression || "0";
-
 }
 
 
 function addToScientificExpression(value) {
-
   scientificExpression += value;
-
   updateScientificDisplay();
-
 }
 
 
 function clearScientificCalculator() {
-
   scientificExpression = "";
 
   scientificExpressionDisplay.textContent =
@@ -208,28 +195,23 @@ function clearScientificCalculator() {
 
   scientificResultDisplay.textContent =
     "0";
-
 }
 
 
 function deleteScientificCharacter() {
-
   scientificExpression =
     scientificExpression.slice(0, -1);
 
   updateScientificDisplay();
-
 }
 
 
 function calculateScientific() {
-
   if (!scientificExpression) {
     return;
   }
 
   try {
-
     let expression =
       scientificExpression
         .replace(/×/g, "*")
@@ -251,26 +233,17 @@ function calculateScientific() {
       typeof result === "number" &&
       Number.isFinite(result)
     ) {
-
       scientificResultDisplay.textContent =
-        Number.isInteger(result)
-          ? result
-          : Number(result.toFixed(10));
-
+        formatNumber(result);
     } else {
-
       scientificResultDisplay.textContent =
         "Error";
-
     }
 
   } catch (error) {
-
     scientificResultDisplay.textContent =
       "Error";
-
   }
-
 }
 
 
@@ -281,15 +254,11 @@ document
     "#scientific-mode [data-value]"
   )
   .forEach(button => {
-
     button.addEventListener("click", () => {
-
       addToScientificExpression(
         button.dataset.value
       );
-
     });
-
   });
 
 
@@ -300,78 +269,44 @@ document
     "#scientific-mode [data-scientific]"
   )
   .forEach(button => {
-
     button.addEventListener("click", () => {
 
       const functionName =
         button.dataset.scientific;
 
       if (functionName === "pi") {
-
-        addToScientificExpression(
-          "π"
-        );
-
+        addToScientificExpression("π");
       }
 
       else if (functionName === "sqrt") {
-
-        addToScientificExpression(
-          "Math.sqrt("
-        );
-
+        addToScientificExpression("Math.sqrt(");
       }
 
       else if (functionName === "sin") {
-
-        addToScientificExpression(
-          "Math.sin("
-        );
-
+        addToScientificExpression("Math.sin(");
       }
 
       else if (functionName === "cos") {
-
-        addToScientificExpression(
-          "Math.cos("
-        );
-
+        addToScientificExpression("Math.cos(");
       }
 
       else if (functionName === "tan") {
-
-        addToScientificExpression(
-          "Math.tan("
-        );
-
+        addToScientificExpression("Math.tan(");
       }
 
       else if (functionName === "log") {
-
-        addToScientificExpression(
-          "Math.log10("
-        );
-
+        addToScientificExpression("Math.log10(");
       }
 
       else if (functionName === "square") {
-
-        addToScientificExpression(
-          "**2"
-        );
-
+        addToScientificExpression("**2");
       }
 
       else if (functionName === "power") {
-
-        addToScientificExpression(
-          "**"
-        );
-
+        addToScientificExpression("**");
       }
 
     });
-
   });
 
 
@@ -421,7 +356,6 @@ const converterPanels =
 
 
 converterTabs.forEach(tab => {
-
   tab.addEventListener("click", () => {
 
     const selectedConverter =
@@ -445,15 +379,12 @@ converterTabs.forEach(tab => {
       );
 
     if (selectedPanel) {
-
       selectedPanel.classList.add(
         "active-panel"
       );
-
     }
 
   });
-
 });
 
 
@@ -462,19 +393,12 @@ converterTabs.forEach(tab => {
 ========================================= */
 
 const lengthToMetres = {
-
   metre: 1,
-
   kilometre: 1000,
-
   centimetre: 0.01,
-
   mile: 1609.344,
-
   foot: 0.3048,
-
   inch: 0.0254
-
 };
 
 
@@ -506,12 +430,10 @@ document
 
 
     if (Number.isNaN(value)) {
-
       resultDisplay.textContent =
         "Please enter a valid number.";
 
       return;
-
     }
 
 
@@ -526,9 +448,7 @@ document
 
 
     resultDisplay.textContent =
-      `${value} ${from} = ${Number(
-        result.toFixed(8)
-      )} ${to}`;
+      `${formatNumber(value)} ${from} = ${formatNumber(result)} ${to}`;
 
   });
 
@@ -538,15 +458,10 @@ document
 ========================================= */
 
 const weightToKilograms = {
-
   kilogram: 1,
-
   gram: 0.001,
-
   pound: 0.45359237,
-
   ounce: 0.028349523125
-
 };
 
 
@@ -578,12 +493,10 @@ document
 
 
     if (Number.isNaN(value)) {
-
       resultDisplay.textContent =
         "Please enter a valid number.";
 
       return;
-
     }
 
 
@@ -598,9 +511,7 @@ document
 
 
     resultDisplay.textContent =
-      `${value} ${from} = ${Number(
-        result.toFixed(8)
-      )} ${to}`;
+      `${formatNumber(value)} ${from} = ${formatNumber(result)} ${to}`;
 
   });
 
@@ -618,54 +529,33 @@ function convertTemperature(
   let celsius;
 
 
-  /* Convert to Celsius */
-
   if (from === "celsius") {
-
     celsius = value;
-
   }
 
   else if (from === "fahrenheit") {
-
     celsius =
-      (value - 32) *
-      5 / 9;
-
+      (value - 32) * 5 / 9;
   }
 
   else if (from === "kelvin") {
-
     celsius =
       value - 273.15;
-
   }
 
 
-  /* Convert Celsius to target */
-
   if (to === "celsius") {
-
     return celsius;
-
   }
 
   if (to === "fahrenheit") {
-
     return (
-      celsius *
-      9 / 5
+      celsius * 9 / 5
     ) + 32;
-
   }
 
   if (to === "kelvin") {
-
-    return (
-      celsius +
-      273.15
-    );
-
+    return celsius + 273.15;
   }
 
 }
@@ -703,12 +593,10 @@ document
 
 
       if (Number.isNaN(value)) {
-
         resultDisplay.textContent =
           "Please enter a valid temperature.";
 
         return;
-
       }
 
 
@@ -721,9 +609,7 @@ document
 
 
       resultDisplay.textContent =
-        `${value}° ${from} = ${Number(
-          result.toFixed(4)
-        )}° ${to}`;
+        `${formatNumber(value)}° ${from} = ${formatNumber(result)}° ${to}`;
 
     }
   );
@@ -732,17 +618,6 @@ document
 /* =========================================
    CURRENCY CONVERTER
 ========================================= */
-
-/*
-  NOTE:
-  Currency rates change constantly.
-
-  This demo uses exchange rates that you
-  can update later.
-
-  We will connect this section to a
-  live exchange-rate API in the next step.
-*/
 
 const currencyRates = {
 
@@ -840,9 +715,7 @@ document
 
 
       resultDisplay.textContent =
-        `${amount} ${from} = ${Number(
-          result.toFixed(2)
-        )} ${to}`;
+        `${formatNumber(amount)} ${from} = ${formatNumber(result)} ${to}`;
 
     }
   );
@@ -871,58 +744,21 @@ document.addEventListener(
 
 
     if (key === "Enter") {
-
       calculateBasic();
-
     }
 
 
     if (key === "Backspace") {
-
       deleteBasicCharacter();
-
     }
 
 
     if (key === "Escape") {
-
       clearBasicCalculator();
-
     }
 
   }
 );
-
-
-/* =========================================
-   SERVICE WORKER
-========================================= */
-
-if ("serviceWorker" in navigator) {
-
-  window.addEventListener(
-    "load",
-    () => {
-
-      navigator.serviceWorker
-        .register(
-          "/calculator-app/sw.js"
-        )
-        .then(() => {
-
-          console.log(
-            "Service Worker registered successfully."
-          );
-
-        })
-        .catch(error => {
-
-          console.error(
-            "Service Worker registration failed:",
-            error
-          );
-
-        });
 
     }
   );
