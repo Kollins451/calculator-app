@@ -1,12 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
   <meta charset="UTF-8">
 
+  <!-- Prevent unwanted mobile zoom -->
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+
+  <meta
+    name="format-detection"
+    content="telephone=no"
   >
 
   <title>Kollins Calculator</title>
@@ -15,6 +22,24 @@
     rel="stylesheet"
     href="style.css"
   >
+
+  <style>
+    /* Prevent mobile browser zoom on form controls */
+    input,
+    textarea,
+    select,
+    button {
+      font-size: 16px;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      touch-action: manipulation;
+    }
+  </style>
 
 </head>
 
@@ -79,7 +104,6 @@
 
       <nav class="mode-navigation">
 
-
         <button
           class="mode-button active"
           data-mode="basic"
@@ -106,7 +130,6 @@
           Converter
         </button>
 
-
       </nav>
 
 
@@ -120,9 +143,7 @@
         class="calculator-mode active-mode"
       >
 
-
         <div class="calculator-display">
-
 
           <div
             id="basic-expression"
@@ -131,7 +152,6 @@
             0
           </div>
 
-
           <div
             id="basic-result"
             class="result-display"
@@ -139,144 +159,44 @@
             0
           </div>
 
-
         </div>
-
 
 
         <div class="calculator-buttons">
 
-
-          <button
-            data-action="clear"
-            type="button"
-          >
+          <button data-action="clear" type="button">
             AC
           </button>
 
-
-          <button
-            data-action="delete"
-            type="button"
-          >
+          <button data-action="delete" type="button">
             DEL
           </button>
 
-
-          <button
-            data-value="%"
-            type="button"
-          >
+          <button data-value="%" type="button">
             %
           </button>
 
-
-          <button
-            data-value="/"
-            type="button"
-          >
+          <button data-value="/" type="button">
             ÷
           </button>
 
 
-
-          <button
-            data-value="7"
-            type="button"
-          >
-            7
-          </button>
+          <button data-value="7" type="button">7</button>
+          <button data-value="8" type="button">8</button>
+          <button data-value="9" type="button">9</button>
+          <button data-value="*" type="button">×</button>
 
 
-          <button
-            data-value="8"
-            type="button"
-          >
-            8
-          </button>
+          <button data-value="4" type="button">4</button>
+          <button data-value="5" type="button">5</button>
+          <button data-value="6" type="button">6</button>
+          <button data-value="-" type="button">−</button>
 
 
-          <button
-            data-value="9"
-            type="button"
-          >
-            9
-          </button>
-
-
-          <button
-            data-value="*"
-            type="button"
-          >
-            ×
-          </button>
-
-
-
-          <button
-            data-value="4"
-            type="button"
-          >
-            4
-          </button>
-
-
-          <button
-            data-value="5"
-            type="button"
-          >
-            5
-          </button>
-
-
-          <button
-            data-value="6"
-            type="button"
-          >
-            6
-          </button>
-
-
-          <button
-            data-value="-"
-            type="button"
-          >
-            −
-          </button>
-
-
-
-          <button
-            data-value="1"
-            type="button"
-          >
-            1
-          </button>
-
-
-          <button
-            data-value="2"
-            type="button"
-          >
-            2
-          </button>
-
-
-          <button
-            data-value="3"
-            type="button"
-          >
-            3
-          </button>
-
-
-          <button
-            data-value="+"
-            type="button"
-          >
-            +
-          </button>
-
+          <button data-value="1" type="button">1</button>
+          <button data-value="2" type="button">2</button>
+          <button data-value="3" type="button">3</button>
+          <button data-value="+" type="button">+</button>
 
 
           <button
@@ -287,14 +207,9 @@
             0
           </button>
 
-
-          <button
-            data-value="."
-            type="button"
-          >
+          <button data-value="." type="button">
             .
           </button>
-
 
           <button
             data-action="calculate"
@@ -303,9 +218,7 @@
             =
           </button>
 
-
         </div>
-
 
       </section>
 
@@ -320,9 +233,7 @@
         class="calculator-mode"
       >
 
-
         <div class="calculator-display">
-
 
           <div
             id="scientific-expression"
@@ -331,7 +242,6 @@
             0
           </div>
 
-
           <div
             id="scientific-result"
             class="result-display"
@@ -339,201 +249,65 @@
             0
           </div>
 
-
         </div>
-
 
 
         <div class="scientific-buttons">
 
-
-          <button
-            data-scientific="sin"
-            type="button"
-          >
+          <button data-scientific="sin" type="button">
             sin
           </button>
 
-
-          <button
-            data-scientific="cos"
-            type="button"
-          >
+          <button data-scientific="cos" type="button">
             cos
           </button>
 
-
-          <button
-            data-scientific="tan"
-            type="button"
-          >
+          <button data-scientific="tan" type="button">
             tan
           </button>
 
-
-          <button
-            data-scientific="log"
-            type="button"
-          >
+          <button data-scientific="log" type="button">
             log
           </button>
 
-
-          <button
-            data-scientific="sqrt"
-            type="button"
-          >
+          <button data-scientific="sqrt" type="button">
             √
           </button>
 
-
-          <button
-            data-scientific="square"
-            type="button"
-          >
+          <button data-scientific="square" type="button">
             x²
           </button>
 
-
-          <button
-            data-scientific="power"
-            type="button"
-          >
+          <button data-scientific="power" type="button">
             xʸ
           </button>
 
-
-          <button
-            data-scientific="pi"
-            type="button"
-          >
+          <button data-scientific="pi" type="button">
             π
           </button>
 
 
-
-          <button
-            data-value="7"
-            type="button"
-          >
-            7
-          </button>
+          <button data-value="7" type="button">7</button>
+          <button data-value="8" type="button">8</button>
+          <button data-value="9" type="button">9</button>
+          <button data-value="/" type="button">÷</button>
 
 
-          <button
-            data-value="8"
-            type="button"
-          >
-            8
-          </button>
+          <button data-value="4" type="button">4</button>
+          <button data-value="5" type="button">5</button>
+          <button data-value="6" type="button">6</button>
+          <button data-value="*" type="button">×</button>
 
 
-          <button
-            data-value="9"
-            type="button"
-          >
-            9
-          </button>
+          <button data-value="1" type="button">1</button>
+          <button data-value="2" type="button">2</button>
+          <button data-value="3" type="button">3</button>
+          <button data-value="-" type="button">−</button>
 
 
-          <button
-            data-value="/"
-            type="button"
-          >
-            ÷
-          </button>
-
-
-
-          <button
-            data-value="4"
-            type="button"
-          >
-            4
-          </button>
-
-
-          <button
-            data-value="5"
-            type="button"
-          >
-            5
-          </button>
-
-
-          <button
-            data-value="6"
-            type="button"
-          >
-            6
-          </button>
-
-
-          <button
-            data-value="*"
-            type="button"
-          >
-            ×
-          </button>
-
-
-
-          <button
-            data-value="1"
-            type="button"
-          >
-            1
-          </button>
-
-
-          <button
-            data-value="2"
-            type="button"
-          >
-            2
-          </button>
-
-
-          <button
-            data-value="3"
-            type="button"
-          >
-            3
-          </button>
-
-
-          <button
-            data-value="-"
-            type="button"
-          >
-            −
-          </button>
-
-
-
-          <button
-            data-value="0"
-            type="button"
-          >
-            0
-          </button>
-
-
-          <button
-            data-value="."
-            type="button"
-          >
-            .
-          </button>
-
-
-          <button
-            data-value="+"
-            type="button"
-          >
-            +
-          </button>
-
+          <button data-value="0" type="button">0</button>
+          <button data-value="." type="button">.</button>
+          <button data-value="+" type="button">+</button>
 
           <button
             data-action="scientific-calculate"
@@ -541,7 +315,6 @@
           >
             =
           </button>
-
 
 
           <button
@@ -559,9 +332,7 @@
             DEL
           </button>
 
-
         </div>
-
 
       </section>
 
@@ -576,9 +347,7 @@
         class="calculator-mode"
       >
 
-
         <div class="converter-tabs">
-
 
           <button
             class="converter-tab active"
@@ -615,7 +384,6 @@
             Currency
           </button>
 
-
         </div>
 
 
@@ -627,18 +395,15 @@
           class="converter-panel active-panel"
         >
 
-
           <h2>
             Length Converter
           </h2>
-
 
           <input
             id="length-value"
             type="number"
             placeholder="Enter value"
           >
-
 
           <select id="length-from">
 
@@ -713,7 +478,6 @@
             Result will appear here
           </div>
 
-
         </div>
 
 
@@ -725,11 +489,9 @@
           class="converter-panel"
         >
 
-
           <h2>
             Weight Converter
           </h2>
-
 
           <input
             id="weight-value"
@@ -795,7 +557,6 @@
             Result will appear here
           </div>
 
-
         </div>
 
 
@@ -807,11 +568,9 @@
           class="converter-panel"
         >
 
-
           <h2>
             Temperature Converter
           </h2>
-
 
           <input
             id="temperature-value"
@@ -869,7 +628,6 @@
             Result will appear here
           </div>
 
-
         </div>
 
 
@@ -881,11 +639,9 @@
           class="converter-panel"
         >
 
-
           <h2>
             Currency Converter
           </h2>
-
 
           <input
             id="currency-amount"
@@ -951,9 +707,7 @@
             Result will appear here
           </div>
 
-
         </div>
-
 
       </section>
 
@@ -976,7 +730,6 @@
       <!-- AI HEADER -->
 
       <div class="ai-header">
-
 
         <button
           id="back-to-calculator"
@@ -1001,7 +754,6 @@
 
         </div>
 
-
       </div>
 
 
@@ -1013,13 +765,11 @@
         class="ai-chat"
       >
 
-
         <div class="ai-message">
 
           <strong>
             Kollins AI:
           </strong>
-
 
           <p>
             Hello! 👋 I'm Kollins AI.
@@ -1027,9 +777,7 @@
             to help you.
           </p>
 
-
         </div>
-
 
       </div>
 
@@ -1038,7 +786,6 @@
       <!-- AI INPUT -->
 
       <div class="ai-input-area">
-
 
         <textarea
           id="ai-input"
@@ -1054,7 +801,6 @@
         >
           Send
         </button>
-
 
       </div>
 
@@ -1082,7 +828,7 @@
     <footer class="app-footer">
 
       <p>
-        © 2026 Kollins Calculator
+        ©️ 2026 Kollins Calculator
       </p>
 
     </footer>
@@ -1098,12 +844,6 @@
 
   <script src="script.js"></script>
 
-
-</body>
-
-</html>
-
-  <script src="script.js"></script>
 
 </body>
 </html>
