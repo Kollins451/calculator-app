@@ -13,9 +13,7 @@ function formatNumber(value) {
     typeof value !== "number" ||
     !Number.isFinite(value)
   ) {
-
     return "Error";
-
   }
 
   return new Intl.NumberFormat("en-GB", {
@@ -25,33 +23,23 @@ function formatNumber(value) {
 }
 
 
-/* =========================================
-   FORMAT NUMBERS WHILE TYPING
-========================================= */
+/* Format numbers while typing */
 
 function formatExpression(expression) {
 
   if (!expression) {
-
     return "0";
-
   }
 
   return expression.replace(
     /(^|[+\-*/%])(\d+(?:\.\d+)?)/g,
+    function (match, operator, number) {
 
-    function (
-      match,
-      operator,
-      number
-    ) {
-
-      const parts =
-        number.split(".");
+      const parts = number.split(".");
 
       const integerPart =
-        Number(parts[0])
-          .toLocaleString("en-GB");
+        Number(parts[0]).toLocaleString("en-GB");
+
 
       if (parts.length > 1) {
 
@@ -64,10 +52,8 @@ function formatExpression(expression) {
 
       }
 
-      return (
-        operator +
-        integerPart
-      );
+
+      return operator + integerPart;
 
     }
   );
@@ -75,18 +61,89 @@ function formatExpression(expression) {
 }
 
 
-/* =========================================
-   REMOVE COMMAS
-========================================= */
+/* Remove commas before calculation */
 
 function removeCommas(expression) {
 
-  return expression.replace(
-    /,/g,
-    ""
+  return expression.replace(/,/g, "");
+
+}
+
+
+
+/* =========================================
+   AI / CALCULATOR SCREEN SWITCHING
+========================================= */
+
+const calculatorApp =
+  document.getElementById(
+    "calculator-app"
+  );
+
+
+const aiApp =
+  document.getElementById(
+    "ai-app"
+  );
+
+
+const openAIButton =
+  document.getElementById(
+    "open-ai"
+  );
+
+
+const backToCalculatorButton =
+  document.getElementById(
+    "back-to-calculator"
+  );
+
+
+/* Open AI */
+
+if (openAIButton) {
+
+  openAIButton.addEventListener(
+    "click",
+    function () {
+
+      calculatorApp.hidden = true;
+
+      aiApp.hidden = false;
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
   );
 
 }
+
+
+/* Return to Calculator */
+
+if (backToCalculatorButton) {
+
+  backToCalculatorButton.addEventListener(
+    "click",
+    function () {
+
+      aiApp.hidden = true;
+
+      calculatorApp.hidden = false;
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+  );
+
+}
+
 
 
 /* =========================================
@@ -98,6 +155,7 @@ const modeButtons =
     ".mode-button"
   );
 
+
 const calculatorModes =
   document.querySelectorAll(
     ".calculator-mode"
@@ -108,7 +166,7 @@ modeButtons.forEach(button => {
 
   button.addEventListener(
     "click",
-    () => {
+    function () {
 
       const selectedMode =
         button.dataset.mode;
@@ -157,6 +215,7 @@ modeButtons.forEach(button => {
 });
 
 
+
 /* =========================================
    BASIC CALCULATOR
 ========================================= */
@@ -178,6 +237,10 @@ const basicResultDisplay =
 
 function updateBasicDisplay() {
 
+  if (!basicExpressionDisplay) {
+    return;
+  }
+
   basicExpressionDisplay.textContent =
     formatExpression(
       basicExpression
@@ -186,9 +249,7 @@ function updateBasicDisplay() {
 }
 
 
-function addToBasicExpression(
-  value
-) {
+function addToBasicExpression(value) {
 
   basicExpression += value;
 
@@ -226,9 +287,7 @@ function deleteBasicCharacter() {
 function calculateBasic() {
 
   if (!basicExpression) {
-
     return;
-
   }
 
 
@@ -260,9 +319,7 @@ function calculateBasic() {
     ) {
 
       basicResultDisplay.textContent =
-        formatNumber(
-          result
-        );
+        formatNumber(result);
 
     } else {
 
@@ -291,7 +348,7 @@ document
 
     button.addEventListener(
       "click",
-      () => {
+      function () {
 
         addToBasicExpression(
           button.dataset.value
@@ -305,38 +362,57 @@ document
 
 /* Basic Clear */
 
-document
-  .querySelector(
+const basicClearButton =
+  document.querySelector(
     "#basic-mode [data-action='clear']"
-  )
-  .addEventListener(
+  );
+
+
+if (basicClearButton) {
+
+  basicClearButton.addEventListener(
     "click",
     clearBasicCalculator
   );
 
+}
+
 
 /* Basic Delete */
 
-document
-  .querySelector(
+const basicDeleteButton =
+  document.querySelector(
     "#basic-mode [data-action='delete']"
-  )
-  .addEventListener(
+  );
+
+
+if (basicDeleteButton) {
+
+  basicDeleteButton.addEventListener(
     "click",
     deleteBasicCharacter
   );
 
+}
+
 
 /* Basic Equals */
 
-document
-  .querySelector(
+const basicCalculateButton =
+  document.querySelector(
     "#basic-mode [data-action='calculate']"
-  )
-  .addEventListener(
+  );
+
+
+if (basicCalculateButton) {
+
+  basicCalculateButton.addEventListener(
     "click",
     calculateBasic
   );
+
+}
+
 
 
 /* =========================================
@@ -360,6 +436,10 @@ const scientificResultDisplay =
 
 function updateScientificDisplay() {
 
+  if (!scientificExpressionDisplay) {
+    return;
+  }
+
   scientificExpressionDisplay.textContent =
     formatExpression(
       scientificExpression
@@ -368,9 +448,7 @@ function updateScientificDisplay() {
 }
 
 
-function addToScientificExpression(
-  value
-) {
+function addToScientificExpression(value) {
 
   scientificExpression += value;
 
@@ -408,9 +486,7 @@ function deleteScientificCharacter() {
 function calculateScientific() {
 
   if (!scientificExpression) {
-
     return;
-
   }
 
 
@@ -453,9 +529,7 @@ function calculateScientific() {
     ) {
 
       scientificResultDisplay.textContent =
-        formatNumber(
-          result
-        );
+        formatNumber(result);
 
     } else {
 
@@ -484,7 +558,7 @@ document
 
     button.addEventListener(
       "click",
-      () => {
+      function () {
 
         addToScientificExpression(
           button.dataset.value
@@ -506,7 +580,7 @@ document
 
     button.addEventListener(
       "click",
-      () => {
+      function () {
 
         const functionName =
           button.dataset.scientific;
@@ -607,38 +681,57 @@ document
 
 /* Scientific Clear */
 
-document
-  .querySelector(
+const scientificClearButton =
+  document.querySelector(
     "#scientific-mode [data-action='scientific-clear']"
-  )
-  .addEventListener(
+  );
+
+
+if (scientificClearButton) {
+
+  scientificClearButton.addEventListener(
     "click",
     clearScientificCalculator
   );
 
+}
+
 
 /* Scientific Delete */
 
-document
-  .querySelector(
+const scientificDeleteButton =
+  document.querySelector(
     "#scientific-mode [data-action='scientific-delete']"
-  )
-  .addEventListener(
+  );
+
+
+if (scientificDeleteButton) {
+
+  scientificDeleteButton.addEventListener(
     "click",
     deleteScientificCharacter
   );
 
+}
+
 
 /* Scientific Equals */
 
-document
-  .querySelector(
+const scientificCalculateButton =
+  document.querySelector(
     "#scientific-mode [data-action='scientific-calculate']"
-  )
-  .addEventListener(
+  );
+
+
+if (scientificCalculateButton) {
+
+  scientificCalculateButton.addEventListener(
     "click",
     calculateScientific
   );
+
+}
+
 
 
 /* =========================================
@@ -661,7 +754,7 @@ converterTabs.forEach(tab => {
 
   tab.addEventListener(
     "click",
-    () => {
+    function () {
 
       const selectedConverter =
         tab.dataset.converter;
@@ -710,6 +803,7 @@ converterTabs.forEach(tab => {
 });
 
 
+
 /* =========================================
    LENGTH CONVERTER
 ========================================= */
@@ -731,13 +825,17 @@ const lengthToMetres = {
 };
 
 
-document
-  .getElementById(
+const lengthConvertButton =
+  document.getElementById(
     "convert-length"
-  )
-  .addEventListener(
+  );
+
+
+if (lengthConvertButton) {
+
+  lengthConvertButton.addEventListener(
     "click",
-    () => {
+    function () {
 
       const value =
         parseFloat(
@@ -765,9 +863,7 @@ document
         );
 
 
-      if (
-        Number.isNaN(value)
-      ) {
+      if (Number.isNaN(value)) {
 
         resultDisplay.textContent =
           "Please enter a valid number.";
@@ -793,6 +889,9 @@ document
     }
   );
 
+}
+
+
 
 /* =========================================
    WEIGHT CONVERTER
@@ -811,13 +910,17 @@ const weightToKilograms = {
 };
 
 
-document
-  .getElementById(
+const weightConvertButton =
+  document.getElementById(
     "convert-weight"
-  )
-  .addEventListener(
+  );
+
+
+if (weightConvertButton) {
+
+  weightConvertButton.addEventListener(
     "click",
-    () => {
+    function () {
 
       const value =
         parseFloat(
@@ -845,9 +948,7 @@ document
         );
 
 
-      if (
-        Number.isNaN(value)
-      ) {
+      if (Number.isNaN(value)) {
 
         resultDisplay.textContent =
           "Please enter a valid number.";
@@ -872,6 +973,9 @@ document
 
     }
   );
+
+}
+
 
 
 /* =========================================
@@ -901,11 +1005,8 @@ function convertTemperature(
   ) {
 
     celsius =
-      (
-        value - 32
-      ) *
-      5 /
-      9;
+      (value - 32) *
+      5 / 9;
 
   }
 
@@ -915,8 +1016,7 @@ function convertTemperature(
   ) {
 
     celsius =
-      value -
-      273.15;
+      value - 273.15;
 
   }
 
@@ -936,8 +1036,7 @@ function convertTemperature(
 
     return (
       celsius *
-      9 /
-      5
+      9 / 5
     ) + 32;
 
   }
@@ -957,13 +1056,17 @@ function convertTemperature(
 }
 
 
-document
-  .getElementById(
+const temperatureConvertButton =
+  document.getElementById(
     "convert-temperature"
-  )
-  .addEventListener(
+  );
+
+
+if (temperatureConvertButton) {
+
+  temperatureConvertButton.addEventListener(
     "click",
-    () => {
+    function () {
 
       const value =
         parseFloat(
@@ -991,9 +1094,7 @@ document
         );
 
 
-      if (
-        Number.isNaN(value)
-      ) {
+      if (Number.isNaN(value)) {
 
         resultDisplay.textContent =
           "Please enter a valid temperature.";
@@ -1016,6 +1117,9 @@ document
 
     }
   );
+
+}
+
 
 
 /* =========================================
@@ -1078,13 +1182,17 @@ const currencyRates = {
 };
 
 
-document
-  .getElementById(
+const currencyConvertButton =
+  document.getElementById(
     "convert-currency"
-  )
-  .addEventListener(
+  );
+
+
+if (currencyConvertButton) {
+
+  currencyConvertButton.addEventListener(
     "click",
-    () => {
+    function () {
 
       const amount =
         parseFloat(
@@ -1130,7 +1238,7 @@ document
 
 
       if (
-        !rate
+        rate === undefined
       ) {
 
         resultDisplay.textContent =
@@ -1151,6 +1259,84 @@ document
 
     }
   );
+
+}
+
+
+
+/* =========================================
+   KEYBOARD SUPPORT
+========================================= */
+
+document.addEventListener(
+  "keydown",
+  function (event) {
+
+    /* Don't control calculator
+       while typing in AI */
+
+    if (
+      document.activeElement &&
+      document.activeElement.id ===
+      "ai-input"
+    ) {
+
+      return;
+
+    }
+
+
+    const key =
+      event.key;
+
+
+    if (
+      /^[0-9.]$/.test(key) ||
+      [
+        "+",
+        "-",
+        "*",
+        "/",
+        "%"
+      ].includes(key)
+    ) {
+
+      addToBasicExpression(
+        key
+      );
+
+    }
+
+
+    if (
+      key === "Enter"
+    ) {
+
+      calculateBasic();
+
+    }
+
+
+    if (
+      key === "Backspace"
+    ) {
+
+      deleteBasicCharacter();
+
+    }
+
+
+    if (
+      key === "Escape"
+    ) {
+
+      clearBasicCalculator();
+
+    }
+
+  }
+);
+
 
 
 /* =========================================
@@ -1181,63 +1367,37 @@ const aiClearButton =
   );
 
 
-/* Add message to AI chat */
+
+/* Add AI message */
 
 function addAIMessage(
-  message,
-  sender
+  message
 ) {
 
-  if (!aiChat) {
-
-    return;
-
-  }
-
-
-  const messageElement =
+  const messageDiv =
     document.createElement(
       "div"
     );
 
 
-  messageElement.className =
-    `ai-message ${sender}`;
+  messageDiv.className =
+    "ai-message";
 
 
-  if (
-    sender === "ai"
-  ) {
+  messageDiv.innerHTML = `
+    <strong>Kollins AI:</strong>
+    <p></p>
+  `;
 
-    messageElement.innerHTML =
-      `
-        <strong>
-          Kollins AI:
-        </strong>
 
-        <p>
-          ${escapeHTML(message)}
-        </p>
-      `;
-
-  } else {
-
-    messageElement.innerHTML =
-      `
-        <strong>
-          You:
-        </strong>
-
-        <p>
-          ${escapeHTML(message)}
-        </p>
-      `;
-
-  }
+  messageDiv
+    .querySelector("p")
+    .textContent =
+    message;
 
 
   aiChat.appendChild(
-    messageElement
+    messageDiv
   );
 
 
@@ -1247,37 +1407,53 @@ function addAIMessage(
 }
 
 
-/* Protect chat from HTML injection */
 
-function escapeHTML(
-  text
+/* Add User Message */
+
+function addUserMessage(
+  message
 ) {
 
-  const div =
+  const messageDiv =
     document.createElement(
       "div"
     );
 
 
-  div.textContent =
-    text;
+  messageDiv.className =
+    "user-message";
 
 
-  return div.innerHTML;
+  const paragraph =
+    document.createElement(
+      "p"
+    );
+
+
+  paragraph.textContent =
+    message;
+
+
+  messageDiv.appendChild(
+    paragraph
+  );
+
+
+  aiChat.appendChild(
+    messageDiv
+  );
+
+
+  aiChat.scrollTop =
+    aiChat.scrollHeight;
 
 }
 
 
-/* Send message to AI */
+
+/* Send AI Message */
 
 async function sendAIMessage() {
-
-  if (!aiInput) {
-
-    return;
-
-  }
-
 
   const message =
     aiInput.value.trim();
@@ -1292,62 +1468,24 @@ async function sendAIMessage() {
 
   /* Show user message */
 
-  addAIMessage(
-    message,
-    "user"
+  addUserMessage(
+    message
   );
 
 
   /* Clear input */
 
-  aiInput.value =
-    "";
+  aiInput.value = "";
 
 
   /* Disable button */
 
-  if (aiSendButton) {
-
-    aiSendButton.disabled =
-      true;
-
-    aiSendButton.textContent =
-      "Thinking...";
-
-  }
+  aiSendButton.disabled =
+    true;
 
 
-  /* Add loading message */
-
-  const loadingMessage =
-    document.createElement(
-      "div"
-    );
-
-
-  loadingMessage.className =
-    "ai-message ai";
-
-
-  loadingMessage.innerHTML =
-    `
-      <strong>
-        Kollins AI:
-      </strong>
-
-      <p>
-        Thinking...
-      </p>
-    `;
-
-
-  aiChat.appendChild(
-    loadingMessage
-  );
-
-
-  aiChat.scrollTop =
-    aiChat.scrollHeight;
+  aiSendButton.textContent =
+    "Thinking...";
 
 
   try {
@@ -1360,16 +1498,13 @@ async function sendAIMessage() {
           method: "POST",
 
           headers: {
-
             "Content-Type":
               "application/json"
-
           },
 
           body:
             JSON.stringify({
-              message:
-                message
+              message: message
             })
 
         }
@@ -1380,70 +1515,53 @@ async function sendAIMessage() {
       await response.json();
 
 
-    /* Remove loading message */
-
-    loadingMessage.remove();
-
-
     if (
       !response.ok
     ) {
 
-      addAIMessage(
+      throw new Error(
         data.error ||
-        "Sorry, something went wrong.",
-        "ai"
+        "Something went wrong."
       );
-
-      return;
 
     }
 
 
-    /* Display AI response */
-
     addAIMessage(
-      data.answer ||
-      "Sorry, I couldn't generate a response.",
-      "ai"
+      data.reply ||
+      "I couldn't generate a response."
     );
+
 
   } catch (error) {
 
+    addAIMessage(
+      "Sorry, I couldn't connect to Kollins AI right now. Please try again."
+    );
+
+
     console.error(
-      "Kollins AI Error:",
+      "AI Error:",
       error
     );
 
-
-    loadingMessage.remove();
-
-
-    addAIMessage(
-      "Unable to connect to Kollins AI. Please try again.",
-      "ai"
-    );
-
-  } finally {
-
-    /* Enable button again */
-
-    if (aiSendButton) {
-
-      aiSendButton.disabled =
-        false;
-
-      aiSendButton.textContent =
-        "Send";
-
-    }
-
   }
+
+
+  /* Enable button */
+
+  aiSendButton.disabled =
+    false;
+
+
+  aiSendButton.textContent =
+    "Send";
 
 }
 
 
-/* AI Send Button */
+
+/* Send Button */
 
 if (aiSendButton) {
 
@@ -1455,13 +1573,14 @@ if (aiSendButton) {
 }
 
 
-/* AI Enter Key */
+
+/* Enter key for AI */
 
 if (aiInput) {
 
   aiInput.addEventListener(
     "keydown",
-    event => {
+    function (event) {
 
       if (
         event.key === "Enter" &&
@@ -1480,6 +1599,7 @@ if (aiInput) {
 }
 
 
+
 /* =========================================
    CLEAR AI CHAT
 ========================================= */
@@ -1488,111 +1608,27 @@ if (aiClearButton) {
 
   aiClearButton.addEventListener(
     "click",
-    () => {
+    function () {
 
-      aiChat.innerHTML =
-        `
-          <div class="ai-message">
+      aiChat.innerHTML = `
 
-            <strong>
-              Kollins AI:
-            </strong>
+        <div class="ai-message">
 
-            <p>
-              Hello! 👋 I'm Kollins AI.
-              Ask me a question and I'll do my best
-              to help you.
-            </p>
+          <strong>
+            Kollins AI:
+          </strong>
 
-          </div>
-        `;
+          <p>
+            Hello! 👋 I'm Kollins AI.
+            Ask me a question and I'll do my best
+            to help you.
+          </p>
+
+        </div>
+
+      `;
 
     }
   );
 
 }
-
-
-/* =========================================
-   KEYBOARD SUPPORT
-========================================= */
-
-document.addEventListener(
-  "keydown",
-  event => {
-
-    const key =
-      event.key;
-
-
-    /*
-      Only send keyboard numbers
-      to the basic calculator when
-      the Basic mode is active.
-    */
-
-    const basicMode =
-      document.getElementById(
-        "basic-mode"
-      );
-
-
-    const isBasicActive =
-      basicMode &&
-      basicMode.classList.contains(
-        "active-mode"
-      );
-
-
-    if (
-      isBasicActive &&
-      (
-        /^[0-9.]$/.test(key) ||
-        [
-          "+",
-          "-",
-          "*",
-          "/",
-          "%"
-        ].includes(key)
-      )
-    ) {
-
-      addToBasicExpression(
-        key
-      );
-
-    }
-
-
-    if (
-      isBasicActive &&
-      key === "Enter"
-    ) {
-
-      calculateBasic();
-
-    }
-
-
-    if (
-      isBasicActive &&
-      key === "Backspace"
-    ) {
-
-      deleteBasicCharacter();
-
-    }
-
-
-    if (
-      isBasicActive &&
-      key === "Escape"
-    ) {
-
-      clearBasicCalculator();
-
-    }
-
-  }
-);
