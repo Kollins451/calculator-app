@@ -7,90 +7,100 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { message } = req.body;
+    // Get the user's message
+    const { message } = req.body || {};
 
-    // Check that the user sent a message
+    // Make sure a message was provided
     if (!message || typeof message !== "string") {
       return res.status(400).json({
         error: "Please enter a message."
       });
     }
 
-    // Check that the API key exists
-    if (!process.env.OPENAI_API_KEY) {
+    // Check that the OpenAI API key exists
+    const apiKey = process.env.OPENAI_API_KEY;
+
+    if (!apiKey) {
+      console.error("OPENAI_API_KEY is missing.");
+
       return res.status(500).json({
-        error: "AI API key is not configured."
+        error: "OpenAI API key is not configured on the server."
       });
     }
 
-    // Send the user's question to OpenAI
-    const response = await fetch(
+    // Send the request to OpenAI
+    const openAIResponse = await fetch(
       "https://api.openai.com/v1/responses",
       {
         method: "POST",
 
         headers: {
           "Content-Type": "application/json",
-          "Authorization":
-            `Bearer ${process.env.OPENAI_API_KEY}`
+          "Authorization": `Bearer ${apiKey}`
         },
 
         body: JSON.stringify({
           model: "gpt-4o-mini",
 
-          input: [
-            {
-              role: "system",
+          instructions:
+            "You are Kollins AI, a helpful AI assistant built into the Kollins Calculator app. Answer questions clearly and accurately. You can help with mathematics, science, technology, coding, general knowledge, writing, and everyday questions. When explaining mathematics, show the steps clearly. Be friendly, helpful, and concise.",
 
-              content:
-                "You are Kollins AI, a helpful AI assistant built into a calculator app. Answer the user's questions clearly and accurately. You can help with mathematics, science, technology, coding, general knowledge, and everyday questions. When explaining mathematics, show the steps clearly. Be friendly and concise."
-            },
-
-            {
-              role: "user",
-              content: message
-            }
-          ]
+          input: message
         })
       }
     );
 
-    const data = await response.json();
+    // Convert OpenAI's response to JSON
+    const data = await openAIResponse.json();
 
-    // Handle an OpenAI API error
-    if (!response.ok) {
+    // If OpenAI returned an error
+    if (!openAIResponse.ok) {
       console.error(
         "OpenAI API error:",
-        data
+        JSON.stringify(data, null, 2)
       );
 
-      return res.status(response.status).json({
+      return res.status(openAIResponse.status).json({
         error:
           data?.error?.message ||
-          "The AI service returned an error."
+          "OpenAI returned an error."
       });
     }
 
-    // Get the AI's answer
+    // Get the generated AI response
     const answer =
-      data.output_text ||
-      data.output?.[0]?.content?.[0]?.text ||
-      "Sorry, I couldn't generate an answer.";
+      data?.output_text ||
+      data?.output
+        ?.flatMap(item => item.content || [])
+        ?.find(item => item.type === "output_text")
+        ?.text;
 
-    // Send the answer back to script.js
+    // Make sure we actually received an answer
+    if (!answer) {
+      console.error(
+        "No answer found in OpenAI response:",
+        JSON.stringify(data, null, 2)
+      );
+
+      return res.status(500).json({
+        error: "OpenAI did not return a valid response."
+      });
+    }
+
+    // Send the AI answer back to your website
     return res.status(200).json({
       reply: answer
     });
 
   } catch (error) {
-
     console.error(
-      "Server error:",
+      "Kollins AI backend error:",
       error
     );
 
     return res.status(500).json({
       error:
+        error?.message ||
         "Something went wrong while connecting to Kollins AI."
     });
   }
