@@ -1,358 +1,184 @@
-/* =========================
-   GENERAL
-========================= */
+/* =========================================
+   KOLLINS AI
+========================================= */
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  width: 100%;
-  min-height: 100%;
-  touch-action: manipulation;
-}
-
-body {
-  width: 100%;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  background: #222222;
-  color: #ffffff;
-  overflow-x: hidden;
-  -webkit-text-size-adjust: 100%;
-}
-
-button,
-input,
-select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-}
-
-
-/* =========================
-   APP
-========================= */
-
-.app {
-  width: 100%;
-  max-width: 600px;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 20px 15px 40px;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-.app-header {
+.ai-header {
   text-align: center;
-  padding: 10px 0 20px;
-}
-
-.app-header h1 {
-  font-size: 28px;
-}
-
-
-/* =========================
-   MAIN NAVIGATION
-========================= */
-
-.mode-navigation {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
   margin-bottom: 20px;
 }
 
-.mode-button {
-  border: none;
-  border-radius: 10px;
-  padding: 12px 5px;
-  background: #444444;
-  color: #ffffff;
-  font-weight: bold;
+.ai-header h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
 }
 
-.mode-button.active {
-  background: #ff9500;
-}
-
-
-/* =========================
-   CALCULATOR MODES
-========================= */
-
-.calculator-mode {
-  display: none;
-}
-
-.calculator-mode.active-mode {
-  display: block;
+.ai-header p {
+  color: #cccccc;
+  line-height: 1.5;
+  font-size: 15px;
 }
 
 
-/* =========================
-   DISPLAY
-========================= */
+/* AI CHAT BOX */
 
-.calculator-display {
+.ai-chat {
   width: 100%;
-  min-height: 120px;
-  padding: 20px;
+  min-height: 300px;
+  max-height: 500px;
+  padding: 15px;
   margin-bottom: 15px;
+
   background: #111111;
   border-radius: 15px;
-  text-align: right;
-  overflow: hidden;
-  word-wrap: break-word;
-}
 
-.expression {
-  min-height: 35px;
-  font-size: 20px;
-  color: #aaaaaa;
-  overflow-wrap: anywhere;
-}
-
-.result {
-  min-height: 50px;
-  font-size: 38px;
-  font-weight: bold;
-  overflow-wrap: anywhere;
+  overflow-y: auto;
 }
 
 
-/* =========================
-   BASIC BUTTONS
-========================= */
+/* AI MESSAGE */
 
-.calculator-buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-.calculator-button {
-  min-height: 65px;
-  border: none;
-  border-radius: 12px;
-  background: #444444;
-  color: #ffffff;
-  font-size: 22px;
-  font-weight: bold;
-  transition: transform 0.1s, opacity 0.1s;
-}
-
-.calculator-button:active {
-  transform: scale(0.95);
-  opacity: 0.8;
-}
-
-.operator-button {
-  background: #ff9500;
-}
-
-.clear-button {
-  background: #e74c3c;
-}
-
-.equals-button {
-  background: #27ae60;
-}
-
-.zero-button {
-  grid-column: span 2;
-}
-
-
-/* =========================
-   SCIENTIFIC CALCULATOR
-========================= */
-
-.scientific-buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-.scientific-buttons .calculator-button {
-  min-height: 60px;
-  font-size: 18px;
-}
-
-
-/* =========================
-   CONVERTER
-========================= */
-
-#converter-mode h2 {
-  text-align: center;
+.ai-message {
+  max-width: 90%;
   margin-bottom: 15px;
-}
+  padding: 12px 15px;
 
-.converter-tabs {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.converter-tab {
-  border: none;
-  border-radius: 10px;
-  padding: 12px 5px;
-  background: #444444;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-.converter-tab.active {
-  background: #ff9500;
-}
-
-
-/* =========================
-   CONVERTER PANELS
-========================= */
-
-.converter-panel {
-  display: none;
   background: #333333;
-  padding: 20px;
-  border-radius: 15px;
+  border-radius: 12px;
+
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
-.converter-panel.active-panel {
+.ai-message strong {
+  color: #ff9500;
   display: block;
+  margin-bottom: 5px;
 }
 
-.converter-panel h3 {
-  text-align: center;
-  margin-bottom: 20px;
+.ai-message p {
+  margin: 0;
 }
 
 
-/* =========================
-   FORM ELEMENTS
-========================= */
+/* USER MESSAGE */
 
-.converter-panel label {
+.user-message {
+  max-width: 90%;
+  margin-left: auto;
+  margin-bottom: 15px;
+  padding: 12px 15px;
+
+  background: #444444;
+  border-radius: 12px;
+
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.user-message strong {
   display: block;
-  margin: 12px 0 6px;
-  color: #dddddd;
+  margin-bottom: 5px;
 }
 
-.converter-panel input,
-.converter-panel select {
+
+/* AI INPUT AREA */
+
+.ai-input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#ai-input {
   width: 100%;
-  min-height: 50px;
-  margin-bottom: 12px;
-  padding: 10px;
+  min-height: 80px;
+
+  padding: 12px;
+
   border: 1px solid #555555;
-  border-radius: 8px;
+  border-radius: 10px;
+
   background: #222222;
   color: #ffffff;
+
+  font-size: 16px;
+  resize: vertical;
   outline: none;
 }
 
-.converter-panel input:focus,
-.converter-panel select:focus {
+#ai-input:focus {
   border-color: #ff9500;
 }
 
 
-/* =========================
-   CONVERT BUTTON
-========================= */
+/* SEND BUTTON */
 
-.convert-button {
+.ai-send-button {
   width: 100%;
-  min-height: 52px;
-  margin-top: 10px;
+  min-height: 50px;
+
   border: none;
   border-radius: 10px;
-  background: #27ae60;
+
+  background: #ff9500;
   color: #ffffff;
+
   font-weight: bold;
   font-size: 17px;
 }
 
-.convert-button:active {
+.ai-send-button:active {
   transform: scale(0.98);
 }
 
 
-/* =========================
-   CONVERSION RESULT
-========================= */
+/* CLEAR CHAT BUTTON */
 
-.conversion-result {
-  min-height: 60px;
-  margin-top: 20px;
-  padding: 15px;
+.ai-clear-button {
+  width: 100%;
+  min-height: 45px;
+
+  margin-top: 10px;
+
+  border: none;
   border-radius: 10px;
-  background: #222222;
-  text-align: center;
-  font-size: 20px;
+
+  background: #444444;
+  color: #ffffff;
+
   font-weight: bold;
-  overflow-wrap: anywhere;
+}
+
+.ai-clear-button:active {
+  transform: scale(0.98);
 }
 
 
-/* =========================
-   TABLET
-========================= */
+/* AI LOADING MESSAGE */
 
-@media (min-width: 600px) {
-
-  .app {
-    padding: 30px 25px 50px;
-  }
-
-  .calculator-button {
-    min-height: 75px;
-  }
-
-  .mode-button {
-    padding: 15px;
-  }
-
+.ai-loading {
+  color: #bbbbbb;
+  font-style: italic;
 }
 
 
-/* =========================
-   SMALL PHONES
-========================= */
+/* MOBILE RESPONSIVENESS */
 
 @media (max-width: 380px) {
 
-  .app {
-    padding: 15px 10px 30px;
+  .ai-header h2 {
+    font-size: 22px;
   }
 
-  .app-header h1 {
-    font-size: 23px;
+  .ai-header p {
+    font-size: 14px;
   }
 
-  .calculator-button {
-    min-height: 55px;
-    font-size: 18px;
+  .ai-chat {
+    min-height: 250px;
   }
 
-  .scientific-buttons .calculator-button {
-    font-size: 15px;
-  }
+}
 
   .result {
     font-size: 30px;
